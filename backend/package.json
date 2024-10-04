@@ -1,0 +1,23 @@
+{
+  "name": "boring-mattmoh-server",
+  "version": "1.0.0",
+  "description": "Node.js server for the boring-mattmoh personal website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js", 
+    "dev": "nodemon server.js",
+    "build": "echo 'No build process for the server'"   
+  },
+  "dependencies": {
+    "express": "^4.17.3",              
+    "cors": "^2.8.5",
+    "marked": "14.1.2"                   
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"             
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "license": "MIT"
+}
