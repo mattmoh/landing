@@ -1,0 +1,66 @@
+/* StyleGuidePage.css */
+.style-guide {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: calc(100vh - 150px); /* Subtract navbar and footer height */
+}
+
+.style-guide main {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  height: 100%; /* Ensure main takes full height */
+}
+
+.toc-container {
+  width: 10%;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  /*background-color: #f9f9f9;*/
+  height: 95%; /* Extend to full height */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  overflow-y: auto; /* Add vertical scroll if content overflows */
+}
+
+.content-container {
+  width: 90%;
+  padding: 20px;
+  height: 95%; /* Ensure content takes full height */
+  overflow-y: auto; /* Add vertical scroll if content overflows */
+}
+
+.toc ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.toc li {
+  margin-bottom: 10px;
+}
+
+.toc a {
+  text-decoration: none;
+  color: #007bff;
+  display: block; /* Ensure the entire area is clickable */
+  padding: 5px; /* Add some padding for better click area */
+}
+
+.toc a:hover {
+  background-color: #e0e0e0; /* Gray hover effect */
+  text-decoration: none; /* Remove underline on hover */
+  color: #333;
+}
+
+.toc .active {
+  background-color: #e0e0e0; /* Keep gray background */
+  color: #333; /* Keep font color */
+}
+
+.toc .selected a {
+  font-weight: bold;
+  color: #0056b3;
+}

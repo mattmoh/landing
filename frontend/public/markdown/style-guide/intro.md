@@ -1,0 +1,3 @@
+# Introduction to the Workday Style Guide
+
+Welcome to the Workday Style Guide, a comprehensive resource designed to help developers, analysts, and administrators create consistent, scalable, and maintainable configurations within Workday. This guide focuses on four key areas: Condition Rules, Calculated Fields, Reports, and Custom Validations. By following these guidelines, teams can ensure that their Workday environments are optimized for clarity, efficiency, and ease of future updates.

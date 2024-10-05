@@ -2,31 +2,30 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import MarkdownRenderer from '../components/MarkdownRenderer';
 import TableOfContents from '../components/TableOfContents';
+import './StyleGuidePage.css'; // Import the CSS file
 
 export default function StyleGuidePage() {
   const { fileName } = useParams();
   const [files, setFiles] = useState([]);
 
-  // Fetch the markdown files from the backend API
+  // Manually set the markdown files
   useEffect(() => {
-    fetch('/api/markdown-files')
-      .then((response) => response.json())
-      .then((data) => setFiles(data))
-      .catch((error) => console.error('Error fetching markdown files:', error));
+    const manualFiles = ['intro', 'condition-rules'];
+    setFiles(manualFiles);
   }, []);
 
   return (
-    <div className="style-guide">
+    <main className="style-guide">
       <div className="toc-container">
         <TableOfContents files={files} />
       </div>
       <div className="content-container">
         {fileName ? (
-          <MarkdownRenderer markdownPath={`/markdown/${fileName}`} />
+          <MarkdownRenderer markdownPath={`../markdown/style-guide/${fileName}.md`} />
         ) : (
-          <p>Select a file from the table of contents.</p>
+          <p>Please select a file from the table of contents.</p>
         )}
       </div>
-    </div>
+    </main>
   );
 }

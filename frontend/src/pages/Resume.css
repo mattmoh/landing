@@ -1,4 +1,8 @@
 /* Resume.css */
+.markdown-content {
+  width: 80%;
+  margin: 0 auto;
+}
 .resume {
   display: flex;
   flex-direction: column;

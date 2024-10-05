@@ -3,9 +3,9 @@ import './Home.css';
 
 export default function Home() {
   return (
-    <div className='home'>
+    <main className='home'>
       <MarkdownRenderer markdownPath="/markdown/mattmoh.md" />
-    </div>
+    </main>
   );
 } 
   

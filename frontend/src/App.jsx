@@ -10,14 +10,12 @@ export default function App() {
   return (
     <Router>
         <Navbar />
-        <main>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/style-guide" element={<StyleGuidePage />} />
           <Route path="/style-guide/:fileName" element={<StyleGuidePage />} />
         </Routes>
-        </main>
         <Footer />
     </Router>
   );

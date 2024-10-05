@@ -4,8 +4,8 @@ import './Resume.css';
 
 export default function Resume() {
   return (
-    <div className='resume'>
+    <main className='resume'>
       <MarkdownRenderer markdownPath="/markdown/resume.md" />
-    </div>
+    </main>
   );
 }

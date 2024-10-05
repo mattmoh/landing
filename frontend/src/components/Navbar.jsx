@@ -33,10 +33,6 @@ const navbarStyle = {
   backgroundColor: '#ffffff',
 };
 
-const body = {
-  width: '100%'
-}
-
 const listStyle = {
   display: 'flex',
   alignItems: 'center',
