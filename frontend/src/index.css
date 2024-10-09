@@ -3,9 +3,16 @@
   font-family: 'Roboto', sans-serif;
 }
 
+body {
+  padding: 0;
+  margin: 0;
+}
+
 main {
-  padding-top: 90px;
-  padding-bottom: 30px;
+  padding-top: 100px; /* Adjust based on navbar height */
+  padding-bottom: 30px; /* Adjust based on footer height */
+  width: 80%;
+  margin: 0 auto;
 }
 
 .header-container {
@@ -17,4 +24,111 @@ main {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 20px; /* Added horizontal padding */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid #ddd;
+  background-color: #ffffff;
+}
+
+.navbar ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #000;
+  margin-left: 20px;
+  font-weight: bold;
+}
+
+.navbar img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
+
+/* Footer styles */
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #ffffff;
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  align-items: center;
+  margin: 0 15px;
+}
+
+.footer .icon {
+  margin-right: 8px;
+}
+
+/* Common content styles */
+.markdown-content {
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 44px;
+}
+
+h1, h2, h3, p, ul {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 1.5rem; /* Adjust the font size as needed */
+  border-bottom: 1px solid black; /* Adjust the border thickness and color as needed */
+  margin-top: 1rem;
+}
+
+h2 {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+h3 {
+  margin-top: 0;
+}
+
+p, ul {
+  margin-top: 0;
+  text-align: justify;
 }

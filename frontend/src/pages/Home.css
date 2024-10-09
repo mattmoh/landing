@@ -1,13 +1,10 @@
 /* Home.css */
-.markdown-content {
-    width: 80%;
-    margin: 0 auto;
-  }
-  
 .home h2 {
     text-align: center;
-}
-  
-p {
+    padding: 10px;
+  }
+
+.home p {
     text-align: justify;
-}
+    padding: 10px;
+  }

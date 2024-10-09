@@ -7,5 +7,4 @@ export default function Home() {
       <MarkdownRenderer markdownPath="/markdown/mattmoh.md" />
     </main>
   );
-} 
-  
+}
