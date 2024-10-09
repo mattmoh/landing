@@ -108,6 +108,11 @@ main {
   padding-bottom: 44px;
 }
 
+.markdown-content ul {
+  margin-top: 10px;
+  padding-left: 40px;
+}
+
 h1, h2, h3, p, ul {
   margin: 0;
   padding: 0;

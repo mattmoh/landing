@@ -22,8 +22,7 @@
 }
 
 .toc-container.hidden {
-  transform: translateX(-80%); /* Move the TOC content left */
-  min-width: 40px; /* Set the minimum width of the TOC */
+  transform: translateX(-75%); /* Move the TOC content left */
   border-right: 1px solid #ddd; /* Add right border */
   height: 100%; /* Ensure the hidden TOC container uses the entire height */
   padding: 0 0 0 0px;
