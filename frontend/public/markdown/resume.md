@@ -4,9 +4,9 @@
 
 Assist Financial Accounting and Accounting Center workstreams on developing efficient and effective data pipelines for 3 accounting sources.
 
-## Integration Lead (On Going)
+## Integration Lead (9 months)
 
-Support the global Source-to-Pay implementation and roadmap by defining integraiton and technology requirements.
+Support the global Source-to-Pay transformation by implementing Workday Strategic Sourcing. Defined integration requirements and roadmap for Workday, Third-Party Risk Management System, and Punchout Vendors.
 
 ## Finance Functional Lead (6 months)
 
