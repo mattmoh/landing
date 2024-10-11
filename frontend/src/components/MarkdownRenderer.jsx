@@ -1,4 +1,3 @@
-// src/components/MarkdownRenderer.jsx
 import { useEffect, useState } from 'react';
 import { marked } from 'marked';
 
@@ -17,7 +16,14 @@ export default function MarkdownRenderer({ markdownPath }) {
       .catch((error) => console.error(error));
   }, [markdownPath]);
 
-  const htmlContent = marked(markdownContent);
+  // Create a custom renderer for marked
+  const renderer = new marked.Renderer();
+  renderer.link = (href, title, text) => {
+    return `<a href="${href}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+  };
+
+  // Use the custom renderer
+  const htmlContent = marked(markdownContent, { renderer });
 
   return (
     <div
