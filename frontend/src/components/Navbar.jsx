@@ -16,7 +16,7 @@ export default function Navbar() {
   const hideDropdown = () => {
     hideTimeout = setTimeout(() => {
       setDropdownVisible(false);
-    }, 500);
+    }, 50 0);
   };
 
   const clearHideTimeout = () => {
