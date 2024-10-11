@@ -93,6 +93,7 @@ main {
 .dropdown-menu a:hover {
   background-color: #f0f0f0;
 }
+
 /* Footer styles */
 .footer {
   display: flex;
@@ -137,6 +138,7 @@ main {
 .markdown-content {
   width: 80%;
   margin: 0 auto;
+  padding-top: 20px;
   padding-bottom: 44px;
 }
 
@@ -148,24 +150,42 @@ main {
 h1, h2, h3, p, ul {
   margin: 0;
   padding: 0;
+  margin-bottom: 1rem; /* Add spacing between all tags */
 }
 
 h1 {
   font-size: 1.5rem; /* Adjust the font size as needed */
   border-bottom: 1px solid black; /* Adjust the border thickness and color as needed */
-  margin-top: 1rem;
 }
 
 h2 {
-  font-size: 1rem;
-  margin-top: 0.5rem;
+  font-size: 1.25rem; /* Increase font size to be bigger than h3 */
 }
 
 h3 {
-  margin-top: 0;
+  font-size: 1rem;
 }
 
 p, ul {
-  margin-top: 0;
-  text-align: justify;
+  text-align: left; /* Default text alignment for p tags */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem; /* Add spacing between tables */
+}
+
+table, th, td {
+  border: 1px solid black; /* Add borders to tables */
+}
+
+th {
+  background-color: black; /* Invert header background color */
+  color: white; /* Invert header text color */
+  padding: 0.5rem; /* Add padding within table cells */
+}
+
+td {
+  padding: 0.5rem; /* Add padding within table cells */
 }

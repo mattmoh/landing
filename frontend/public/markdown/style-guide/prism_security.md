@@ -50,49 +50,49 @@ Finally, we have 3 different domain permission patterns to apply for the Prism A
 
 **Pattern I**
 
-> Prism: Delete Table Data\
-> Prism: Insert Table Data\
-> Prism: Manage Data Source\
-> Prism: Select Table Data\
-> Prism: Tables Manage\
-> Prism: Tables Manage Schema\
-> Prism: Tables Owner Manage\
-> Prism: Truncate Table Data\
-> Prism: Update Table Data\
-> Prism Datasets: Manage\
-> Prism Datasets: Owner Manage\
-> Prism Datasets: Publish
-> 
-> | Security Groups                    | View | Modify |
-> | ---------------------------------- | :--: | :----: |
-> | Prism Administrator (Prism Access) | ✅  | ✅     |
-> | Prism Data Editor (Prism Access)   | ✅  | ✅     |
-> | Prism Data Viewer (Constrained)    | ✅  |        |
+Prism: Delete Table Data\
+Prism: Insert Table Data\
+Prism: Manage Data Source\
+Prism: Select Table Data\
+Prism: Tables Manage\
+Prism: Tables Manage Schema\
+Prism: Tables Owner Manage\
+Prism: Truncate Table Data\
+Prism: Update Table Data\
+Prism Datasets: Manage\
+Prism Datasets: Owner Manage\
+Prism Datasets: Publish
+
+| Security Groups                    | View | Modify |
+| ---------------------------------- | :--: | :----: |
+| Prism Administrator (Prism Access) | ✅  | ✅     |
+| Prism Data Editor (Prism Access)   | ✅  | ✅     |
+| Prism Data Viewer (Constrained)    | ✅  |        |
 
 **Pattern II**
 
-> Prism: Tables Create\
-> Prism Datasets: Create
-> 
-> | Security Groups                                | View | Modify |
-> | ---------------------------------------------- | :--: | :----: |
-> | Prism Administrator (Prism Access)             | ✅  | ✅     |
-> | Prism Data Editor (Prism Access)               | ✅  | ✅     |
-> | Accounting Center Administrator (Prism Access) | ✅  | ✅     |
-> | Accounting Center Analyst (Prism Access)       | ✅  | ✅     |
-
-#### Pattern III
-
-> Prism: Manage Connection\
-> Prism: Manage File Containers\
-> Prism: Manage Manage Relax Sharing
+Prism: Tables Create\
+Prism Datasets: Create
 
 | Security Groups                                | View | Modify |
 | ---------------------------------------------- | :--: | :----: |
-| Prism Administrator (> Prism Access)             | ✅  | ✅     |
-| Prism Data Editor (> Prism Access)               | ✅  | ✅     |
-| Accounting Center Administrator (> Prism Access) | ✅  | ✅     |
-| Accounting Center Analyst (> Prism Access)       | ✅  | ✅     |
+| Prism Administrator (Prism Access)             | ✅  | ✅     |
+| Prism Data Editor (Prism Access)               | ✅  | ✅     |
+| Accounting Center Administrator (Prism Access) | ✅  | ✅     |
+| Accounting Center Analyst (Prism Access)       | ✅  | ✅     |
+
+#### Pattern III
+
+Prism: Manage Connection\
+Prism: Manage File Containers\
+Prism: Manage Manage Relax Sharing
+
+| Security Groups                                | View | Modify |
+| ---------------------------------------------- | :--: | :----: |
+| Prism Administrator (Prism Access)             | ✅  | ✅     |
+| Prism Data Editor (Prism Access)               | ✅  | ✅     |
+| Accounting Center Administrator (Prism Access) | ✅  | ✅     |
+| Accounting Center Analyst (Prism Access)       | ✅  | ✅     |
 
 If set up this way, 
 

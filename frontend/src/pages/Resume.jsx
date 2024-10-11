@@ -1,4 +1,3 @@
-import React from 'react';
 import MarkdownRenderer from '../components/MarkdownRenderer';
 import './Resume.css';
 

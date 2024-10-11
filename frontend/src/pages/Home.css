@@ -1,10 +1,8 @@
 /* Home.css */
 .home h2 {
-    text-align: center;
-    padding: 10px;
-  }
+  text-align: center;
+}
 
 .home p {
-    text-align: justify;
-    padding: 10px;
-  }
+  text-align: justify; /* Justify text for home page */
+}

@@ -10,7 +10,7 @@ export default function StyleGuidePage() {
 
   // Manually set the markdown files
   useEffect(() => {
-    const manualFiles = ['intro', 'condition-rules', 'prism-security'];
+    const manualFiles = ['intro', 'condition_rules', 'prism_security'];
     setFiles(manualFiles);
   }, []);
 

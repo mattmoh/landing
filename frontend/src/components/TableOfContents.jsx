@@ -16,6 +16,13 @@ export default function TableOfContents({ files }) {
     setIsTocVisible(!isTocVisible);
   };
 
+  const formatText = (text) => {
+    return text
+      .split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
   return (
     <div className={`toc-container ${isTocVisible ? 'visible' : 'hidden'}`}>
       <div className="arrow-container" onClick={toggleTocVisibility}>
@@ -27,7 +34,7 @@ export default function TableOfContents({ files }) {
           return (
             <li key={index} className={path === activeLink ? 'active' : ''}>
               <Link to={path} onClick={() => handleClick(path)}>
-                {file}
+                {formatText(file)}
               </Link>
             </li>
           );

@@ -5,3 +5,7 @@
   margin: 0 auto;
   text-align: left;
 }
+
+.resume h2 {
+  margin-bottom: 0;
+}
