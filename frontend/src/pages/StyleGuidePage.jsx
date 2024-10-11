@@ -23,7 +23,7 @@ export default function StyleGuidePage() {
         {fileName ? (
           <MarkdownRenderer markdownPath={`../markdown/style-guide/${fileName}.md`} />
         ) : (
-          <p>Please select a file from the table of contents.</p>
+          <p className="p-default">Please select a file from the table of contents.</p>
         )}
       </div>
     </main>
