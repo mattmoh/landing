@@ -1,6 +1,9 @@
 # Ignore node_modules directory
 node_modules/
 
+#Ignore certs directory
+certs/
+
 # Ignore log files
 *.log
 
