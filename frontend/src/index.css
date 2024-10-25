@@ -151,6 +151,7 @@ h1, h2, h3, p, ul {
   margin: 0;
   padding: 0;
   margin-bottom: 1rem; /* Add spacing between all tags */
+  text-align: left;
 }
 
 h1 {
