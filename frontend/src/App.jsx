@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Resume from './pages/Resume';
 import StyleGuidePage from './pages/StyleGuidePage';
+import AppLibrary from './pages/AppLibrary';
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
           <Route path="/resume" element={<Resume />} />
           <Route path="/style-guide" element={<StyleGuidePage />} />
           <Route path="/style-guide/:fileName" element={<StyleGuidePage />} />
+          <Route path="/app-library" element={<AppLibrary />} />
         </Routes>
         <Footer />
     </Router>

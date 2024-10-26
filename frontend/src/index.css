@@ -1,4 +1,14 @@
 /* index.css */
+/*
+* {
+  outline: 1px solid red;
+}
+*/
+
+html {
+  scrollbar-gutter: stable both-edges;
+}
+
 :root {
   font-family: 'Roboto', sans-serif;
 }
@@ -151,6 +161,7 @@ h1, h2, h3, p, ul {
   margin: 0;
   padding: 0;
   margin-bottom: 1rem; /* Add spacing between all tags */
+  text-align: left;
 }
 
 h1 {

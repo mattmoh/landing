@@ -2,11 +2,11 @@
 
 ## Functional Security
 
-In order to have access to the Data Catalog, users must be in either a Prism Access Security Group or a Prism Dataset Role.
+In order to have access to the Data Catalog, which is the entry point to all things Prism, users must be in either a Prism Access Security Group or a Prism Dataset Role. If you follow the guide below, you will have Prism Administrators & Accounting Center Administrators that can see and do everything related to Prism. While, Prism Data Writers & Accounting Center Analysts can create their own objects, but they must be granted access to others' objects.
 
 ### User-Based Security Groups
 
-First, create your user-based security groups that should have access to Prism. 
+First, create your `User-Based Security Groups` that should have access to Prism:
 
 - Prism Administrator
 - Prism Data Writer
@@ -15,7 +15,7 @@ First, create your user-based security groups that should have access to Prism.
 
 ### Prism Access Security Groups
 
-It is recommended that a 1:1 relationship exists between an User-Based Security Group and a Prism Access Security Group. This is equivalent to unconstrained access.
+It is recommended that a 1:1 relationship exists between an User-Based Security Group and a `Prism Access Security Group`. This is equivalent to unconstrained access.
 
 - Prism Administrator (Prism Access)
 - Accounting Center Administrator (Prism Access)
@@ -24,7 +24,7 @@ It is recommended that a 1:1 relationship exists between an User-Based Security 
 
 ### Assignable Roles
 
-There are six default roles for Prism. These should be used to limit the data viewed/edited by users.
+Now we start reigning in on access by creating `Assignable Roles`. There are six default roles for Prism, ensure they are configured like this:
 
 | Role Name            | Self-Assign | Role Assignees Restricted to | Assigned/Reviewed by Security Group |
 | -------------------- | :---------: | ---------------------------- | ----------------------------------- |
@@ -37,7 +37,7 @@ There are six default roles for Prism. These should be used to limit the data vi
 
 ### Role-Based Security Groups (Constrained)
 
-To assign users to the roles above, create the following Role-Based Security Groups. You do not need to create similar roles for Owners or Tables (unless desired).
+To assign users to the roles above, create the following `Role-Based Security Groups`. You _do not_ need to create similar roles for Owners or Tables.
 
 | Security Group                  | Assignable Role | Access Rights to Organizations |
 | ------------------------------- | --------------- | ------------------------------ |
@@ -94,14 +94,25 @@ Prism: Manage Manage Relax Sharing
 | Accounting Center Administrator (Prism Access) | ✅  | ✅     |
 | Accounting Center Analyst (Prism Access)       | ✅  | ✅     |
 
-If set up this way, 
+Don't forget to `Activate Pending Security Policies`. Once that is done, add your workers to the applicable group. Now people are able to get into the Data Catalog.
 
-**NEXT LEVEL** [Partitioned Administrator Security](https://collaborate.workday.com/t5/General/Prism-Contributed-Solution-Partitioned-Administrator-Security/ta-p/1252093)
+If other functional areas use Prism for their reporting needs, it may be beneficial to also segment out those teams and create complementary security groups like Accounting Center. For example, if your Vendor Management Team uses Prism, create a Prism Access Security Group and other security elements for Supplier Administrators and Supplier Analysts. If you do this, you may want to consider **NEXT LEVEL** [Partitioned Administrator Security](https://collaborate.workday.com/t5/General/Prism-Contributed-Solution-Partitioned-Administrator-Security/ta-p/1252093).
 
 
 ## Table/Dataset Sharing
 
-**Helpful Task:** Edit Accounting Source Prism Role Assignments
+Our functional security is set up in a manner that ownership and sharing permissions are tightly controlled. Whomever creates an object now in Prism, owns it. In order for others to see or edit it, they must be granted access by an administrator or the owner themselves. 
 
-## Reporting Security
+To share a table or dataset, use the related actions from the object you want to edit. From the Security option, choose `Edit Dataset Sharing` or `Edit Table Sharing`. From there, change the owner or choose who can view or edit the object.
 
+As this is completed, Accounting Center Analysts and Prism Data Writers will see the objects in their Data Catalog grow. 
+
+Luckily for the Accounting Center area, there is a task `Edit Accounting Source Prism Role Assignments` that easily applies the desired security to the Accounting Source.
+
+## Report/Data Source Security
+
+Once we set up our functional security and sharing, and build our first Prism pipeline, we need to share our work with non-Prism users.
+
+## Custom Domain Security
+
+Can't find a good delivered domain to use? Workday permits up to 150 Custom Domains to be in use.  

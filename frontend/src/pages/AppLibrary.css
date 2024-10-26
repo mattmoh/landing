@@ -1,0 +1,49 @@
+.app-library {
+  display: flex;
+  flex-wrap: wrap;
+  height: calc(100vh - 14.4vh); /* Subtract navbar and footer height */
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin: 16px;
+  padding: 16px;
+  width: 200px; /* Set a fixed width */
+  height: 400px; /* Set the same height to make it square */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center; /* Center align all items including images */
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 16px; /* Add some space below the image */
+}
+
+.card h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.card p {
+  margin-top: 32px;
+  text-align: center;
+  align-self: flex-start; /* Align p tags to the top */
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.intro {
+  margin-bottom: 0;
+  margin-top: 16px;
+  text-align: center
+}
