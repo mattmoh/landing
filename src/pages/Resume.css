@@ -1,0 +1,24 @@
+.resume {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: left;
+  /* overflow-y: auto;
+  max-height: calc(100vh - var(--navbar-height) - var(--footer-height) - 10px); */
+}
+
+.resume h2 {
+  margin-bottom: 0;
+}
+
+.resume h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  text-align: left;
+}
+
+.resume img {
+  width: min-content;
+  height: 50vh; 
+  margin: auto;
+  margin-bottom: 20px;
+}
