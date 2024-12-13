@@ -4,10 +4,6 @@
 }
 */
 
-/* html {
-  scrollbar-gutter: stable both-edges;
-} */
-
 :root {
   font-family: 'Roboto', sans-serif;
   --navbar-height: 100px;
@@ -26,11 +22,35 @@ main {
   margin: 0 auto;
 }
 
+h1, h2, h3, p, ul {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+h1 {
+  font-size: 1.5rem;
+  border-bottom: 1px solid black;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+p, ul {
+  text-align: left;
+}
+
 /* Navbar styles */
 .navbar {
   display: flex;
   align-items: center;
-  padding: 10px 20px; /* Added horizontal padding */
+  padding: 10px 20px;
   position: fixed;
   top: 0;
   width: 100%;
@@ -100,7 +120,7 @@ main {
   margin-right: 8px;
 }
 
-/* Common content styles */
+/* markdown styles */
 .markdown-content {
   width: 80%;
   margin: 0 auto;
@@ -111,28 +131,4 @@ main {
 .markdown-content ul {
   margin-top: 10px;
   padding-left: 40px;
-}
-
-h1, h2, h3, p, ul {
-  margin: 0;
-  padding: 0;
-  margin-bottom: 1rem;
-  text-align: left;
-}
-
-h1 {
-  font-size: 1.5rem;
-  border-bottom: 1px solid black;
-}
-
-h2 {
-  font-size: 1.25rem;
-}
-
-h3 {
-  font-size: 1rem;
-}
-
-p, ul {
-  text-align: left;
 }

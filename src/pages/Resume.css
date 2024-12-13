@@ -3,8 +3,6 @@
   flex-direction: column;
   margin: 0 auto;
   text-align: left;
-  /* overflow-y: auto;
-  max-height: calc(100vh - var(--navbar-height) - var(--footer-height) - 10px); */
 }
 
 .resume h2 {
@@ -17,7 +15,8 @@
 }
 
 .resume img {
-  width: min-content;
+  /* width: min-content; this works on web but not tablet or mobile   */
+  aspect-ratio: auto 1 / 1;
   height: 50vh; 
   margin: auto;
   margin-bottom: 20px;
