@@ -1,8 +1,7 @@
-/* Home.css */
 .home h2 {
   text-align: center;
 }
 
 .home p {
-  text-align: justify; /* Justify text for home page */
+  text-align: justify;
 }

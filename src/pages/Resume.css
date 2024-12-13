@@ -15,7 +15,6 @@
 }
 
 .resume img {
-  /* width: min-content; this works on web but not tablet or mobile   */
   aspect-ratio: auto 1 / 1;
   height: 50vh; 
   margin: auto;
