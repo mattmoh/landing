@@ -57,7 +57,8 @@ const Signup = () => {
                 setCompany('');
                 setEmail('');
             } else {
-                alert('There was an issue signing you up. Please try again.');
+                const errorMessage = result.message || 'There was an issue signing you up. Please try again.';
+                alert(errorMessage);
             }
         } catch (err) {
             console.error('Error creating contact in Brevo:', err);
@@ -67,8 +68,7 @@ const Signup = () => {
 
     return (
         <main className="signup">
-            <h2>Want to learn some Workday tips and tricks or stay connected?</h2>
-            <h2>Sign up for my newsletter!</h2>
+            <h2>Want to learn some Workday tips and tricks or stay connected?<br />Sign up for my newsletter!</h2>
             <form onSubmit={handleSubmit}>
                 <div>
                     <input

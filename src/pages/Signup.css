@@ -1,78 +1,64 @@
 .signup {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
-    text-align: left;
-    width: 50% !important;
+    align-items: center;
     padding-top: calc(var(--navbar-height) + 20px);
-}
-
-@media (max-width: 1024px) {
-    .signup {
-        width: 80% !important;
-    }
-}
-
-@media (max-width: 768px) {
-    .signup {
-        width: 100% !important;
-    }
-}
-
-.signup h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.signup form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.signup label {
-    margin-top: 5px;
-    font-size: 0.8em;
-    font-style: italic;
-    color: grey;
-}
-
-.signup input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    gap: 20px;
 }
 
 .signup button {
-    padding: 10px 20px;
+    display: block;
+    margin: 20px auto;
+    background-color: #007bff;
+    color: #fff;
     border: none;
-    border-radius: 50px;
-    background-color: #007BFF;
-    color: white;
+    border-radius: 25px;
+    padding: 12px 24px;
+    font-size: 16px;
     cursor: pointer;
-    padding: 10px;
-    width: 150px;
-    align-self: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .signup button:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
-.signup .error {
-    color: red;
-    font-size: 0.8em;
+.signup label {
+    color: #6c757d;
+    font-style: italic;
     margin-top: 5px;
+    display: block;
+    text-align: left;
+}
+
+.error p {
+    color: #dc3545;
+    font-style: italic;
+    margin: 0;
+}
+
+.signup input {
+    display: block;
+    margin: 10px auto;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.signup input:focus {
+    border-color: #007bff;
+    outline: none;
 }
 
 .signup div {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
+    width: 100%;
 }
 
-.signup .error p {
-    margin: 0;
-    padding: 0;
-  }
-  
+.signup h2 {
+    margin-bottom: 0;
+    text-align: center;
+}
