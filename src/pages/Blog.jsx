@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Blog.css';
 import { createClient } from '@supabase/supabase-js';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
@@ -14,9 +14,7 @@ const toTitleCase = (str) => {
 };
 
 const Blog = () => {
-    const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
-    const id = queryParams.get('id');
+    const { id } = useParams();
     const [data, setData] = useState(null);
 
     useEffect(() => {
