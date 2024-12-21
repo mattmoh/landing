@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Signup.css';
-import axios from 'axios';
 
 const Signup = () => {
     const [first_name, setFirstName] = useState('');
@@ -42,6 +41,7 @@ const Signup = () => {
                 body: JSON.stringify({
                     attributes: { FIRSTNAME: data.first_name, LASTNAME: data.last_name, COMPANY: data.company },
                     updateEnabled: false,
+                    listIds: [2],
                     email: data.email
                 })
             };
