@@ -57,7 +57,8 @@ const Signup = () => {
                 setCompany('');
                 setEmail('');
             } else {
-                alert('There was an issue signing you up. Please try again.');
+                const errorMessage = result.message || 'There was an issue signing you up. Please try again.';
+                alert(errorMessage);
             }
         } catch (err) {
             console.error('Error creating contact in Brevo:', err);
