@@ -5,7 +5,6 @@ import Home from './pages/Home';
 import Resume from './pages/Resume';
 import Signup from './pages/Signup';
 import Footer from './components/Footer';
-import Signup from './pages/Signup';
 
 const App = () => {
   return (
