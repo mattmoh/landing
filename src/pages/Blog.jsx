@@ -15,7 +15,6 @@ const toTitleCase = (str) => {
 
 const Blog = () => {
     const { id } = useParams();
-    console.log('Blog ID:', id);
     const [data, setData] = useState(null);
 
     useEffect(() => {
