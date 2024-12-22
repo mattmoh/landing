@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Blog.css';
 import { createClient } from '@supabase/supabase-js';
 import { useParams } from 'react-router-dom';
-import { ProgressBar } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
@@ -51,15 +51,18 @@ const Blog = () => {
                     </ul>
                 </>
             ) : (
-                <div>  render(<ProgressBar
-                    visible={true}
-                    height="80"
-                    width="80"
-                    color= "#000000"
-                    ariaLabel="progress-bar-loading"
-                    wrapperStyle={{}}
-                    wrapperClass=""
-                    />)</div>
+                <div>
+                    <ThreeDots
+                        visible={true}
+                        height="80"
+                        width="80"
+                        color="#808080"
+                        radius="9"
+                        ariaLabel="three-dots-loading"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                    />
+                </div>
             )}
         </main>
     );
