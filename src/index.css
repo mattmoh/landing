@@ -37,6 +37,10 @@ main {
   margin: 0 auto;
 }
 
+h1, h2, h3 {
+  font-family: 'Lora', serif;
+}
+
 h1, h2, h3, p, ul {
   margin: 0;
   padding: 0;
