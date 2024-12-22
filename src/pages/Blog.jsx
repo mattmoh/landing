@@ -37,13 +37,19 @@ const Blog = () => {
 
     return (
         <main className='blog'>
-            <h1>{data && data.length > 0 ? toTitleCase(data[0].post_title) : 'Loading...'}</h1>
-            <p>{data && data[0].post_body}</p>
-            <ul>
-                {data && data[0].post_tags.map((tag, index) => (
-                    <li key={index}>{toTitleCase(tag.trim())}</li>
-                ))}
-            </ul>
+            {data && data.length > 0 ? (
+                <>
+                    <h1>{toTitleCase(data[0].post_title)}</h1>
+                    <p>{data[0].post_body}</p>
+                    <ul>
+                        {data[0].post_tags.map((tag, index) => (
+                            <li key={index}>{toTitleCase(tag.trim())}</li>
+                        ))}
+                    </ul>
+                </>
+            ) : (
+                <h1>Loading...</h1>
+            )}
         </main>
     );
 };
