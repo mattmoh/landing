@@ -16,12 +16,7 @@ export default function MarkdownRenderer({ markdownPath }) {
       .catch((error) => console.error(error));
   }, [markdownPath]);
 
-  const renderer = new marked.Renderer();
-  renderer.text = (text) => {
-    return text.replace(/~~(.*?)~~/g, '<span class="strikethrough">$1</span>');
-  };
-
-  const htmlContent = marked(markdownContent, { renderer });
+  const htmlContent = marked(markdownContent);
 
   return (
     <div

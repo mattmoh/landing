@@ -67,35 +67,37 @@ const Blog = () => {
     return <div>Error: {error}</div>;
   }
 
-  return (
+return (
     <main className='blog'>
-      {data && data.length > 0 ? (
-        <>
-          <h1>{toTitleCase(data[0].post_title)}</h1>
-          <p>{data[0].post_body}</p>
-          <ul>
-            {data[0].post_tags.map((tag, index) => (
-              <li key={index}>{toTitleCase(tag.trim())}</li>
-            ))}
-          </ul>
-        </>
-      ) : (
-        <div>
-            <p>No blog post found.</p>
-            <ThreeDots
-                visible={true}
-                height="80"
-                width="80"
-                color="#808080"
-                radius="9"
-                ariaLabel="three-dots-loading"
-                wrapperStyle={{ textAlign: 'center', display: 'block' }}
-                wrapperClass=""
-            />
-        </div>
-      )}
+        {data && data.length > 0 ? (
+            <>
+                {data[0].post_title && <h1>{toTitleCase(data[0].post_title)}</h1>}
+                {data[0].post_body && <p>{data[0].post_body}</p>}
+                {data[0].post_tags && data[0].post_tags.length > 0 && (
+                    <ul>
+                        {data[0].post_tags.map((tag, index) => (
+                            <li key={index}>{toTitleCase(tag.trim())}</li>
+                        ))}
+                    </ul>
+                )}
+            </>
+        ) : (
+            <div>
+                    <p>No blog post found.</p>
+                    <ThreeDots
+                            visible={true}
+                            height="80"
+                            width="80"
+                            color="#808080"
+                            radius="9"
+                            ariaLabel="three-dots-loading"
+                            wrapperStyle={{ textAlign: 'center', display: 'block' }}
+                            wrapperClass=""
+                    />
+            </div>
+        )}
     </main>
-  );
+);
 };
 
 export default Blog;
