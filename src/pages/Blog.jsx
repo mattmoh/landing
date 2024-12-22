@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Blog.css';
 import { createClient } from '@supabase/supabase-js';
 import { useParams } from 'react-router-dom';
+import { ProgressBar } from 'react-loader-spinner';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
@@ -15,10 +16,6 @@ const toTitleCase = (str) => {
 
 const Blog = () => {
     let { id } = useParams();
-    if (!id) {
-        id = 0;
-    }
-    const [data, setData] = useState(null);
 
     useEffect(() => {
         if (id) {
@@ -28,13 +25,16 @@ const Blog = () => {
                 .eq('id', id)
                 .then(({ data, error }) => {
                     if (error) {
-                        console.error('Error connecting to Supabase:', error);
+                        console.error('Error connecting to Supabase: ', error);
                     } else {
                         console.log('Connection to Supabase successful');
                         console.log('Blog Post: ', data[0].id);
                         setData(data);
                     }
                 });
+        }
+        else if (id === '0') {
+            console.log('No blog post selected.');
         }
     }, [id]);
 
@@ -51,7 +51,15 @@ const Blog = () => {
                     </ul>
                 </>
             ) : (
-                <h1>Loading...</h1>
+                <div>  render(<ProgressBar
+                    visible={true}
+                    height="80"
+                    width="80"
+                    color= "#000000"
+                    ariaLabel="progress-bar-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    />)</div>
             )}
         </main>
     );
