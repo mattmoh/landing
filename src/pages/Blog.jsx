@@ -15,6 +15,7 @@ const toTitleCase = (str) => {
 };
 
 const Blog = () => {
+    const [data, setData] = useState(null);
     let { id } = useParams();
 
     useEffect(() => {
