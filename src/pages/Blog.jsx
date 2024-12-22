@@ -80,7 +80,7 @@ const Blog = () => {
           </ul>
         </>
       ) : (
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: 'center', flex: 'none' }}>
             <p>No blog post found.</p>
             <ThreeDots
                 visible={true}
