@@ -80,9 +80,9 @@ const Blog = () => {
           </ul>
         </>
       ) : (
-        <div>
-            <div>No blog post found.</div>
-            <div style={{ padding: 'auto 0' }}><ThreeDots
+        <div style={{ textAlign: 'center' }}>
+            <p>No blog post found.</p>
+            <ThreeDots
                 visible={true}
                 height="80"
                 width="80"
@@ -91,8 +91,7 @@ const Blog = () => {
                 ariaLabel="three-dots-loading"
                 wrapperStyle={{}}
                 wrapperClass=""
-                />
-            </div>
+            />
         </div>
       )}
     </main>
