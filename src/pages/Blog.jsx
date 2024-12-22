@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Blog.css';
 import { createClient } from '@supabase/supabase-js';
 import { useParams } from 'react-router-dom';
+import { ThreeDots } from 'react-loader-spinner'
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
@@ -14,8 +15,8 @@ const toTitleCase = (str) => {
 };
 
 const Blog = () => {
-    const { id } = useParams();
     const [data, setData] = useState(null);
+    let { id } = useParams();
 
     useEffect(() => {
         if (id) {
@@ -25,7 +26,7 @@ const Blog = () => {
                 .eq('id', id)
                 .then(({ data, error }) => {
                     if (error) {
-                        console.error('Error connecting to Supabase:', error);
+                        console.error('Error connecting to Supabase: ', error);
                     } else {
                         console.log('Connection to Supabase successful');
                         console.log('Blog Post: ', data[0].id);
@@ -33,17 +34,37 @@ const Blog = () => {
                     }
                 });
         }
+        else if (id === '0') {
+            console.log('No blog post selected.');
+        }
     }, [id]);
 
     return (
         <main className='blog'>
-            <h1>{data && data.length > 0 ? toTitleCase(data[0].post_title) : 'Loading...'}</h1>
-            <p>{data && data[0].post_body}</p>
-            <ul>
-                {data && data[0].post_tags.map((tag, index) => (
-                    <li key={index}>{toTitleCase(tag.trim())}</li>
-                ))}
-            </ul>
+            {data && data.length > 0 ? (
+                <>
+                    <h1>{toTitleCase(data[0].post_title)}</h1>
+                    <p>{data[0].post_body}</p>
+                    <ul>
+                        {data[0].post_tags.map((tag, index) => (
+                            <li key={index}>{toTitleCase(tag.trim())}</li>
+                        ))}
+                    </ul>
+                </>
+            ) : (
+                <div>
+                    <ThreeDots
+                        visible={true}
+                        height="80"
+                        width="80"
+                        color="#808080"
+                        radius="9"
+                        ariaLabel="three-dots-loading"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                    />
+                </div>
+            )}
         </main>
     );
 };
