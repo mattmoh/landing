@@ -89,7 +89,7 @@ const Blog = () => {
                 color="#808080"
                 radius="9"
                 ariaLabel="three-dots-loading"
-                wrapperStyle={{ display: 'none' }}
+                wrapperStyle={{ textAlign: 'center' }}
                 wrapperClass=""
             />
         </div>
