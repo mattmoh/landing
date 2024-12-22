@@ -80,7 +80,7 @@ const Blog = () => {
           </ul>
         </>
       ) : (
-        <div style={{ textAlign: 'center', flex: 'none' }}>
+        <div>
             <p>No blog post found.</p>
             <ThreeDots
                 visible={true}
@@ -89,7 +89,7 @@ const Blog = () => {
                 color="#808080"
                 radius="9"
                 ariaLabel="three-dots-loading"
-                wrapperStyle={{}}
+                wrapperStyle={{ flex: 'none' }}
                 wrapperClass=""
             />
         </div>
