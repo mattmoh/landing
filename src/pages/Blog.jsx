@@ -82,7 +82,7 @@ const Blog = () => {
       ) : (
         <div>
             <div>No blog post found.</div>
-            <div><ThreeDots
+            <div style={{ padding: 'auto 0' }}><ThreeDots
                 visible={true}
                 height="80"
                 width="80"
