@@ -170,6 +170,7 @@ button:hover {
   transform: scale(1.05);
 }
 
+/* Blog styles */
 .blog {
   display: flex;
   flex-direction: column;
