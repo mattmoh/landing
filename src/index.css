@@ -10,6 +10,21 @@
   --footer-height: 30px;
 }
 
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -20,6 +35,10 @@ main {
   padding-bottom: var(--footer-height);
   width: 80%;
   margin: 0 auto;
+}
+
+h1, h2, h3 {
+  font-family: 'Lora', serif;
 }
 
 h1, h2, h3, p, ul {
