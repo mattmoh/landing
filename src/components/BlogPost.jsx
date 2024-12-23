@@ -62,39 +62,39 @@ const BlogPost = ({ postId }) => {
     return <div>Error: {error}</div>;
   }
 
-  return (
-    <main className={data[0].class}>
-      {data && data.length > 0 ? (
-        <>
-          {data[0].post_title && <h2 dangerouslySetInnerHTML={{ __html: marked(data[0].post_title) }}></h2>}
-          {data[0].post_body && (
-            <div dangerouslySetInnerHTML={{ __html: marked(data[0].post_body) }} />
-          )}
-          {data[0].post_tags && data[0].post_tags.length > 0 && (
-            <ul>
-              {data[0].post_tags.map((tag, index) => (
-                <li key={index}>{toTitleCase(tag.trim())}</li>
-              ))}
-            </ul>
-          )}
-        </>
-      ) : (
-        <div>
-          <p>No blog post found.</p>
-          <ThreeDots
-            visible={true}
-            height="80"
-            width="80"
-            color="#808080"
-            radius="9"
-            ariaLabel="three-dots-loading"
-            wrapperStyle={{ textAlign: 'center', display: 'block' }}
-            wrapperClass=""
-          />
-        </div>
-      )}
+return (
+    <main className={data && data.length > 0 && data[0].class ? data[0].class : 'blog'}>
+        {data && data.length > 0 ? (
+            <>
+                {data[0].post_title && <h2 dangerouslySetInnerHTML={{ __html: marked(data[0].post_title) }}></h2>}
+                {data[0].post_body && (
+                    <div dangerouslySetInnerHTML={{ __html: marked(data[0].post_body) }} />
+                )}
+                {data[0].post_tags && data[0].post_tags.length > 0 && (
+                    <ul>
+                        {data[0].post_tags.map((tag, index) => (
+                            <li key={index}>{toTitleCase(tag.trim())}</li>
+                        ))}
+                    </ul>
+                )}
+            </>
+        ) : (
+            <div>
+                <p>No blog post found.</p>
+                <ThreeDots
+                    visible={true}
+                    height="80"
+                    width="80"
+                    color="#808080"
+                    radius="9"
+                    ariaLabel="three-dots-loading"
+                    wrapperStyle={{ textAlign: 'center', display: 'block' }}
+                    wrapperClass=""
+                />
+            </div>
+        )}
     </main>
-  );
+);
 };
 
 export default BlogPost;
