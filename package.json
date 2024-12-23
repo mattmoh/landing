@@ -17,7 +17,8 @@
     "marked": "^15.0.0",
     "@supabase/supabase-js": "^2.0.0",
     "react-loader-spinner": "6.1.6",
-    "react-transition-group": "^4.4.2"
+    "react-transition-group": "^4.4.2",
+    "react-modal": "^3.14.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

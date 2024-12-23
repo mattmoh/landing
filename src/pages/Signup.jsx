@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import './Signup.css';
+import ResponseModal from '../components/ResponseModal';
 
 const Signup = () => {
-    const [first_name, setFirstName] = useState('');
-    const [last_name, setLastName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [company, setCompany] = useState('');
     const [email, setEmail] = useState('');
     const [errors, setErrors] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
 
     const validateForm = () => {
         const validationErrors = [];
-        if (!first_name.trim()) validationErrors.push('First Name is required.');
-        if (!last_name.trim()) validationErrors.push('Last Name is required.');
-        if (!company.trim()) validationErrors.push('Company is required.');
+        if (!firstName.trim()) validationErrors.push('First Name is required.');
+        if (!lastName.trim()) validationErrors.push('Last Name is required.');
         if (email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) validationErrors.push('Email is invalid.');
         if (!email.trim()) validationErrors.push('Email is required.');
         return validationErrors;
@@ -28,7 +30,7 @@ const Signup = () => {
         }
 
         setErrors([]);
-        const data = { first_name, last_name, company, email };
+        const data = { first_name: firstName, last_name: lastName, company, email };
 
         try {
             const options = {
@@ -51,19 +53,24 @@ const Signup = () => {
             console.log(result);
 
             if (response.ok) {
-                alert('Thank you for signing up!');
+                setModalMessage('Thank you for signing up!');
                 setFirstName('');
                 setLastName('');
                 setCompany('');
                 setEmail('');
             } else {
-                const errorMessage = result.message || 'There was an issue signing you up. Please try again.';
-                alert(errorMessage);
+                setModalMessage(`Error: ${result.message}`);
             }
         } catch (err) {
             console.error('Error creating contact in Brevo:', err);
-            alert('There was an issue signing you up. Please try again.');
+            setModalMessage(`Error: ${err.message}`);
+        } finally {
+            setIsModalOpen(true);
         }
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
     };
 
     return (
@@ -73,7 +80,7 @@ const Signup = () => {
                 <div>
                     <input
                         type="text"
-                        value={first_name}
+                        value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
                     />
                     <label>First Name</label>
@@ -81,7 +88,7 @@ const Signup = () => {
                 <div>
                     <input
                         type="text"
-                        value={last_name}
+                        value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
                     />
                     <label>Last Name</label>
@@ -111,6 +118,7 @@ const Signup = () => {
                     </div>
                 )}
             </form>
+            <ResponseModal isOpen={isModalOpen} onRequestClose={closeModal} message={modalMessage} />
         </main>
     );
 };

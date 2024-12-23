@@ -54,44 +54,9 @@ Led the client through developing a reporting strategy leveraging Workday Standa
 
 ## Recruiting Enablement Consultant (3 months)
 
-Assisted the Recruiting Workstream in the preparation and execution of the Silver and Gold builds for a multi-national conglomerate with over 97,000 employees.
-
-# Workday Certifications
-
-- Engagement Manger/Project Manager (EM/PM)
-- Foundation Data Model (FDM)
-- Accounting Center
-- Record to Report (R2R)
-- People Analytics
-- Prism Analytics
-- Advanced Reporting
-- Recruiting
-- Human Capital Management (HCM)
-
-# Education
-
-## Master of Science | Finance
-
-University of Illinois, Chicago
-
-## Bachelor of Business Administration | Management
-
-University of Illinois, Springfield
-
-## Bachelor of Science | Management Information Systems
-
-University of Illinois, Springfield
-
-# Work Experience
-
-## Senior Data Engineer | CNA Insurance
-
-March 2024 – Present
-
-## Senior Consultant | Deloitte
-
-December 2019 – February 2024
-
-## Airfield Manager | United States Air Force
-
-June 2009 – October 2019
+Assisted the Recruiting Workstream in the preparation and execution of the Silver and Gold builds for a multi-national conglomerate with over 97,000 employees.  
+<br/>
+<br/>
+<br/>
+<br/>  
+![Waving](./public/waving.png)
