@@ -1,10 +1,9 @@
-import MarkdownRenderer from '../components/MarkdownRenderer';
+import React from 'react';
+import BlogPost from '../components/BlogPost';
 import './Home.css';
 
-export default function Home() {
-  return (
-    <main className='home'>
-      <MarkdownRenderer markdownPath="/markdown/mattmoh.md" />
-    </main>
-  );
-}
+const Home = ({ postId }) => {
+  return <BlogPost postId={postId} />;
+};
+
+export default Home;

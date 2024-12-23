@@ -4,17 +4,16 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import Resume from './pages/Resume';
 import Signup from './pages/Signup';
 import Blog from './pages/Blog';
 
 const routes = [
-  { path: "/", element: <Home /> },
-  { path: "/resume", element: <Resume /> },
+  { path: "/", element: <Home postId={1} /> },
+  { path: "/resume", element: <Home postId={0} /> },
   { path: "/signup", element: <Signup /> },
   { path: "/blog", element: <Blog /> },
   { path: "/blog/:id", element: <Blog /> },
-  { path: "*", element: <Home /> },
+  { path: "*", element: <Home postId={1} /> },
 ];
 
 const AnimatedRoutes = () => {

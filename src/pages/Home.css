@@ -1,3 +1,4 @@
+/* Home */
 .home h2 {
   text-align: center;
   font-size: 6rem;
@@ -30,4 +31,32 @@
   height: 2px;
   background-color: red;
   animation: strikethrough 1s ease-out forwards;
+}
+
+/* Resume */
+.resume {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.resume h2 {
+  margin-bottom: 0;
+}
+
+.resume h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  text-align: left;
+}
+
+.resume ul {
+  padding: none;
+}
+
+.resume img {
+  aspect-ratio: auto 1 / 1;
+  height: 50vh; 
+  margin: auto;
+  display: block;
 }
