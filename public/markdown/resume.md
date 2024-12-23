@@ -59,4 +59,4 @@ Assisted the Recruiting Workstream in the preparation and execution of the Silve
 <br/>
 <br/>
 <br/>  
-![Waving](./public/waving.png)
+![Waving](./waving.png)
