@@ -11,7 +11,6 @@ const routes = [
   { path: "/", element: <Home postId={1} /> },
   { path: "/resume", element: <Home postId={0} /> },
   { path: "/signup", element: <Signup /> },
-  { path: "/blog", element: <Blog /> },
   { path: "/blog/:id", element: <Blog /> },
   { path: "*", element: <Home postId={1} /> },
 ];

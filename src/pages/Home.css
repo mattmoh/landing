@@ -8,36 +8,8 @@
   text-align: justify;
 }
 
-@keyframes strikethrough {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-.strikethrough {
-  position: relative;
-  display: inline-block;
-}
-
-.strikethrough::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 50%;
-  width: 100%;
-  height: 2px;
-  background-color: red;
-  animation: strikethrough 1s ease-out forwards;
-}
-
 /* Resume */
 .resume {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
   text-align: left;
 }
 
@@ -51,7 +23,7 @@
 }
 
 .resume ul {
-  padding: none;
+  padding:  0 0 0 20px;
 }
 
 .resume img {

@@ -4,7 +4,8 @@ import BlogPost from '../components/BlogPost';
 
 const Blog = () => {
   const { id } = useParams();
-  return <BlogPost postId={id ? parseInt(id, 10) : 1} />;
+  console.log(id);
+  return <BlogPost postId={parseInt(id, 10)} />;
 };
 
 export default Blog;

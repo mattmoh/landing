@@ -66,7 +66,9 @@ return (
     <main className={data && data.length > 0 && data[0].class ? data[0].class : 'blog'}>
         {data && data.length > 0 ? (
             <>
-                {data[0].post_title && <h2 dangerouslySetInnerHTML={{ __html: marked(data[0].post_title) }}></h2>}
+                {data[0].post_title && (
+                    <div dangerouslySetInnerHTML={{ __html: marked(data[0].post_title) }} />
+                )}
                 {data[0].post_body && (
                     <div dangerouslySetInnerHTML={{ __html: marked(data[0].post_body) }} />
                 )}
