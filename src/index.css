@@ -207,7 +207,8 @@ a {
   margin: 0 auto;
 }
 
-.blog-tags li {
+.blog-tags li,
+.blog-toc-tags span {
   display: inline-block;
   background-color: #f3f3f3;
   border-radius: 5px;
@@ -217,4 +218,40 @@ a {
   color: #333;
   border: 1px solid black;
   text-align: center;
+}
+
+.blog-toc-tags span {
+  margin-left: 15px;
+}
+
+.blog-toc {
+  text-align: left;
+}
+
+.blog-toc div {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.blog-toc-item {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.blog-toc-item a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.blog-toc-item h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.blog-toc-date {
+  margin: 0;
+  font-size: 1rem;
+  color: #666;
+  margin-top: 5px;
 }

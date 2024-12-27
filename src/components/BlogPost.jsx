@@ -26,8 +26,6 @@ const BlogPost = ({ postId }) => {
       } catch (error) {
         console.error('Error connecting to Supabase: ', error);
         setError(error.message);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -38,54 +36,51 @@ const BlogPost = ({ postId }) => {
     return <div>Error: {error}</div>;
   }
 
+  if (!data) {
+    return (
+      <div>
+        <p>Loading...</p>
+        <ThreeDots
+          visible={true}
+          height="80"
+          width="80"
+          color="#808080"
+          radius="9"
+          ariaLabel="three-dots-loading"
+          wrapperStyle={{ textAlign: 'center', display: 'block' }}
+          wrapperClass=""
+        />
+      </div>
+    );
+  }
+
+  const post = data[0];
+
   return (
-    <main className={data && data.length > 0 && data[0].class ? data[0].class : 'blog'}>
-      {data && data.length > 0 ? (
-        <>
-          {data[0].post_title && (
-            <div 
-              className={data[0].class + "-title"}
-              dangerouslySetInnerHTML={{
-                __html: marked(data[0].post_title)
-              }}
-            />
-          )}
-          {postId > 1 && data[0].created_at && (
-            <div 
-              className="blog-date">
-              {format(new Date(data[0].created_at), 'MMMM d, yyyy')}
-            </div>
-          )}
-          {data[0].post_body && (
-            <div
-              className="blog-post"
-              dangerouslySetInnerHTML={{
-                __html: marked(data[0].post_body)
-              }}
-            />
-          )}
-          {data[0].post_tags && data[0].post_tags.length > 0 && (
-            <ul className="blog-tags">
-              {data[0].post_tags.map((tag, index) => (
-                <li key={index}>{tag.trim()}</li>
-              ))}
-            </ul>
-          )}
-        </>
-      ) : (
-        <div>
-          <p>No blog post found.</p>
-          <ThreeDots
-            visible={true}
-            height="80"
-            width="80"
-            color="#808080"
-            radius="9"
-            ariaLabel="three-dots-loading"
-            wrapperStyle={{ textAlign: 'center', display: 'block' }}
-            wrapperClass=""
-          />
+    <main className={post.class || 'blog'}>
+      {post.post_title && (
+        <div
+          className={`${post.class}-title`}
+          dangerouslySetInnerHTML={{ __html: marked(post.post_title) }}
+        />
+      )}
+      {postId > 1 && post.created_at && (
+        <div className="blog-date">
+          {format(new Date(post.created_at), 'MMMM d, yyyy')}
         </div>
+      )}
+      {post.post_body && (
+        <div
+          className="blog-post"
+          dangerouslySetInnerHTML={{ __html: marked(post.post_body) }}
+        />
+      )}
+      {post.post_tags && post.post_tags.length > 0 && (
+        <ul className="blog-tags">
+          {post.post_tags.map((tag, index) => (
+            <li key={index}>{tag.trim()}</li>
+          ))}
+        </ul>
       )}
     </main>
   );

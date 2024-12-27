@@ -6,11 +6,13 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Blog from './pages/Blog';
+import BlogTOC from './pages/BlogTOC';
 
 const routes = [
   { path: "/", element: <Home postId={1} /> },
   { path: "/resume", element: <Home postId={0} /> },
   { path: "/signup", element: <Signup /> },
+  { path: "/blog", element: <BlogTOC /> },  
   { path: "/blog/:id", element: <Blog /> },
   { path: "*", element: <Home postId={1} /> },
 ];
