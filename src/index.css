@@ -32,9 +32,14 @@ body {
   flex-direction: column;
 }
 
+@media (min-width: 1080px) {
+  main {
+    max-width: 1000px;
+  }
+}
+
 main {
   padding-bottom: var(--footer-height);
-  width: 80%;
   margin: 0 auto;
   align-items: center;
   padding-top: calc(var(--navbar-height) + 1rem);
@@ -157,8 +162,17 @@ a {
   align-items: center;
 }
 
-.blog h2 {
+.blog-title {
   text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0;
+  font-family: 'Lora', serif;
+  font-weight: bold;
+}
+
+.blog-date p {
+  text-align: center;
+  font-size: 1.25rem;
 }
 
 .blog-post {
