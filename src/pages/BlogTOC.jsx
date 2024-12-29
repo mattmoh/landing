@@ -17,8 +17,8 @@ const BlogTOC = () => {
       try {
         const { data, error } = await supabase
           .from('blog_posts')
-          .select('id, post_title, post_tags, created_at')
-          .gt('id', 1);
+          .select('post_id, post_title, post_tags, created_at')
+          .gt('post_id', 1);
 
         if (error) throw error;
 
@@ -61,7 +61,7 @@ const BlogTOC = () => {
       <div className="blog-toc">
         {posts.map((post) => (
           <div key={post.id} className="blog-toc-item">
-            <a href={`/blog/${post.id}`}>
+            <a href={`/blog/${post.post_id}`}>
               <h2>{post.post_title}</h2>
               <p className="blog-toc-date">{format(new Date(post.created_at), 'MMMM d, yyyy')}</p>
             </a>

@@ -13,7 +13,7 @@ const routes = [
   { path: "/resume", element: <Home postId={0} /> },
   { path: "/signup", element: <Signup /> },
   { path: "/blog", element: <BlogTOC /> },  
-  { path: "/blog/:id", element: <Blog /> },
+  { path: "/blog/:post_id", element: <Blog /> },
   { path: "*", element: <Home postId={1} /> },
 ];
 

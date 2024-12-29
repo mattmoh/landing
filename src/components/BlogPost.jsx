@@ -18,7 +18,7 @@ const BlogPost = ({ postId }) => {
         const { data, error } = await supabase
           .from('blog_posts')
           .select('*')
-          .eq('id', postId);
+          .eq('post_id', postId);
 
         if (error) throw error;
 
