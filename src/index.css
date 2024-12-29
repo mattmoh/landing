@@ -85,10 +85,11 @@ a {
   padding: 10px 20px;
   position: fixed;
   top: 0;
-  width: 100%;
   z-index: 1000;
   border-bottom: 1px solid #ddd;
   background-color: #ffffff;
+  left: 0;
+  right: 0;
 }
 
 .navbar ul {
@@ -109,6 +110,12 @@ a {
   height: 75px;
   border-radius: 50%;
 }
+
+.spacer {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+  }
 
 /* Footer styles */
 .footer {

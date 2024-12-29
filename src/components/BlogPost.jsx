@@ -5,7 +5,7 @@ import { marked } from 'marked';
 import { format } from 'date-fns';
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
+const supabaseKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const BlogPost = ({ postId }) => {
@@ -18,7 +18,7 @@ const BlogPost = ({ postId }) => {
         const { data, error } = await supabase
           .from('blog_posts')
           .select('*')
-          .eq('id', postId);
+          .eq('post_id', postId);
 
         if (error) throw error;
 

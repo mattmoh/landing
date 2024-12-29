@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Navbar() {
+  const isLoggedIn = true; // Replace with actual login check
+
   return (
     <nav className="navbar">
       <ul>
@@ -16,8 +18,14 @@ export default function Navbar() {
         </li>
         <li><Link to="/resume">Resume</Link></li>
         <li><Link to="/blog">Blog</Link></li>
-        <li><Link to="/signup">Newsletter</Link></li>
       </ul>
+      <div className="spacer">
+        {isLoggedIn ? (
+          <Link to="/account">Profile</Link>
+        ) : (
+          <Link to="/account">Log In</Link>
+        )}
+      </div>
     </nav>
   );
 }

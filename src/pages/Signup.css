@@ -3,7 +3,17 @@
     flex-direction: column;
     align-items: center;
     padding-top: calc(var(--navbar-height) + 20px);
-    gap: 20px;
+    gap: 10px;
+}
+
+.signout {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.signout button {
+    margin: 0 !important;
+    background-color: #dc3545 !important;
 }
 
 .signup button {
@@ -61,4 +71,24 @@
 .signup h2 {
     margin-bottom: 0;
     text-align: center;
+}
+
+.tabs {
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabs a {
+    text-decoration: none;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    transition: border-color 0.3s ease;
+    margin: 0;
+    gap: none;
+}
+
+.tabs a:active {
+    border-top: 2px solid #ddd;
 }

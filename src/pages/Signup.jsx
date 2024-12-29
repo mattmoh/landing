@@ -7,6 +7,14 @@ const Signup = () => {
     const [lastName, setLastName] = useState('');
     const [company, setCompany] = useState('');
     const [email, setEmail] = useState('');
+    const [tenant, setTenant] = useState('');
+    const [client_id, setClientID] = useState('');
+    const [ISU_username, setISUusername] = useState('');
+    const [ISU_password, setISUpassword] = useState('');
+    const [base_url, setBaseURL] = useState('');
+    const [client_secret, setClientSecret] = useState('');
+    const [refresh_token, setRefreshToken] = useState('');
+
     const [errors, setErrors] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
@@ -108,6 +116,62 @@ const Signup = () => {
                         onChange={(e) => setEmail(e.target.value)} 
                     />
                     <label>Email</label>
+                </div>
+                <div>
+                    <input
+                        type="text"
+                        value={tenant}
+                        onChange={(e) => setTenant(e.target.value)} 
+                    />
+                    <label>Workday Tenant</label>
+                </div>
+                <div>
+                    <input
+                        type="text"
+                        value={client_id}
+                        onChange={(e) => setClientID(e.target.value)} 
+                    />
+                    <label>Client ID</label>
+                </div>
+                <div>
+                    <input
+                        type="text"
+                        value={ISU_username}
+                        onChange={(e) => setISUusername(e.target.value)} 
+                    />
+                    <label>ISU Username</label>
+                </div>
+                <div>
+                    <input
+                        type="password"
+                        value={ISU_password}
+                        onChange={(e) => setISUpassword(e.target.value)} 
+                    />
+                    <label>ISU Password</label>
+                </div>
+                <div>
+                    <input
+                        type="text"
+                        value={base_url}
+                        onChange={(e) => setBaseURL(e.target.value)} 
+                    />
+                    <label>Base URL</label>
+                </div>
+                <div>
+                    <input
+                        type="text"
+                        value={client_secret}
+                        onChange={(e) => setClientSecret(e.target.value)} 
+                    />
+                    <label>Client Secret</label>
+                </div>
+                <div>
+                    <input
+                        type="text"
+                        value={refresh_token}
+                        onChange={(e) => setRefreshToken(e.target.value)} 
+                    />
+                    <label>Refresh Token</label>
                 </div>
                 <button type="submit">Sign Up</button>
                 {errors.length > 0 && (
