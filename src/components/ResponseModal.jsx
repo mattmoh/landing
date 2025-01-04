@@ -1,8 +1,7 @@
-// filepath: /c:/Users/mohci/dev/new-mattmoh/src/components/ResponseModal.jsx
 import React from 'react';
 import Modal from 'react-modal';
 
-Modal.setAppElement('#root'); // Set the root element for accessibility
+Modal.setAppElement('#root');
 
 const ResponseModal = ({ isOpen, onRequestClose, message }) => {
 return (

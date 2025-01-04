@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Home from './pages/Home';
-import Signup from './pages/Signup';
 import Blog from './pages/Blog';
 import BlogTOC from './pages/BlogTOC';
 import { supabase } from './components/supabaseClient';
@@ -24,13 +22,12 @@ const App = () => {
   }, []);
 
   const routes = [
-    { path: "/", element: <Home postId={1} /> },
-    { path: "/resume", element: <Home postId={0} /> },
-    { path: "/signup", element: <Signup /> },
+    { path: "/", element: <Blog defaultPostId={1} /> },
+    { path: "/resume", element: <Blog defaultPostId={0} /> },
     { path: "/blog", element: <BlogTOC /> },  
-    { path: "/blog/:post_id", element: <Blog /> },
+    { path: "/blog/:post_id", element: <Blog defaultPostId={1} /> },
     { path: "/account", element: <Account session={session} /> },
-    { path: "*", element: <Home postId={1} /> },
+    { path: "*", element: <Blog defaultPostId={1} /> },
   ];
 
   const AnimatedRoutes = () => {

@@ -1,0 +1,37 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #ddd;
+    background-color: #ffffff;
+    left: 0;
+    right: 0;
+}
+  
+.navbar ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.navbar a {
+    margin-left: 20px;
+    font-weight: bold;
+}
+  
+.navbar img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+  
+.spacer {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
