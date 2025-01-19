@@ -6,7 +6,7 @@ const Resume = () => {
     const [markdown, setMarkdown] = useState('');
 
     useEffect(() => {
-        fetch('./public/resume.md')
+        fetch('.public/resume.md')
             .then(response => response.text())
             .then(text => setMarkdown(text));
     }, []);
@@ -14,7 +14,7 @@ const Resume = () => {
     return (
         <main>
             <div dangerouslySetInnerHTML={{ __html: marked(markdown) }} />
-            <button onClick={() => window.open('./public/MOHRENWEISER_2409.PDF', '_blank')}>Get the real thing!</button>
+            <button onClick={() => window.open('/public/MOHRENWEISER_2409.PDF', '_blank')}>Get the real thing!</button>
         </main>
     );
 };

@@ -98,7 +98,7 @@ button:hover {
 }
 
 .app-background {
-  background-image: url('./background.avif');
+  background-image: url('/background.avif');
   background-size: cover;
   background-position: center;
   min-height: 100vh;
