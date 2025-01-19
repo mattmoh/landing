@@ -14,7 +14,7 @@ const Resume = () => {
     return (
         <main>
             <div dangerouslySetInnerHTML={{ __html: marked(markdown) }} />
-            <button onClick={() => window.open('/MOHRENWEISER_2409.PDF', '_blank')}>Get the real thing!</button>
+            <button onClick={() => window.open('/Mohrenweiser_2409.pdf', '_blank')}>Get the real thing!</button>
         </main>
     );
 };
