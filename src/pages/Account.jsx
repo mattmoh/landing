@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../components/supabaseClient';
+import { getProfile, getCompany, getTenant, updateProfile, updateTenant, getCompanyByName, insertCompany } from '../components/supabaseClient';
 import Auth from '../components/Auth';
 import Submenu from '../components/Submenu';
 import UserTab from '../components/UserTab';
@@ -23,20 +23,20 @@ export default function Account({ session }) {
   });
   const [tenant, setTenant] = useState({
     workday_tenant: null,
-    prism_client_id: null,
-    ISU_username: null,
-    ISU_password: null,
-    prism_client_secret: null,
-    prism_refresh_token: null,
+    client_id: null,
+    isu_username: null,
+    isu_password: null,
+    client_secret: null,
+    refresh_token: null,
     base_url: null,
   });
   const [activeTab, setActiveTab] = useState('user');
-  const [showISUPassword, setShowISUPassword] = useState(false);
+  const [showisuPassword, setShowisuPassword] = useState(false);
   const [showClientSecret, setShowClientSecret] = useState(false);
 
   useEffect(() => {
     let ignore = false;
-    async function getProfile() {
+    async function fetchData() {
       if (!session) {
         setLoading(false);
         return;
@@ -45,34 +45,19 @@ export default function Account({ session }) {
       setLoading(true);
       const { user } = session;
 
-      const { data: user_data, error } = await supabase
-        .from('profiles')
-        .select(`*`)
-        .eq('id', user.id)
-        .single();
-
-      if (error) {
-        console.warn(error);
+      const { data: user_data, error: user_error } = await getProfile(user.id);
+      if (user_error) {
+        console.warn(user_error);
         setLoading(false);
         return;
       }
 
-      const { data: company_data, error: company_error } = await supabase
-        .from('companies')
-        .select('company_name')
-        .eq('company_id', user_data.company_id)
-        .single();
-
+      const { data: company_data, error: company_error } = await getCompany(user_data.company_id);
       if (company_error) {
         console.warn(company_error);
       }
 
-      const { data: tenant_data, error: tenant_error } = await supabase
-        .from('credentials')
-        .select('*')
-        .eq('company_id', user_data.company_id)
-        .single();
-
+      const { data: tenant_data, error: tenant_error } = await getTenant(user_data.company_id);
       if (tenant_error) {
         console.warn(tenant_error);
       }
@@ -85,31 +70,57 @@ export default function Account({ session }) {
 
       setLoading(false);
     }
-
-    getProfile();
+    fetchData();
 
     return () => {
       ignore = true;
     };
   }, [session]);
 
-  async function updateProfile(event, avatarUrl) {
+  async function handleUpdateProfile(event, avatarUrl) {
     event.preventDefault();
     setLoading(true);
     const { user } = session;
+
+    let companyId = company.company_id;
+    if (company.company_name) {
+      const { data: existingCompany, error: existingCompanyError } = await getCompanyByName(company.company_name);
+      if (existingCompany) {
+        companyId = existingCompany.company_id;
+      } else {
+        const { data: newCompany, error: newCompanyError } = await insertCompany({ company_name: company.company_name });
+        if (newCompanyError && newCompanyError.code === '23505') { // Unique constraint violation
+          const { data: existingCompanyAfterError } = await getCompanyByName(company.company_name);
+          if (existingCompanyAfterError) {
+            companyId = existingCompanyAfterError.company_id;
+          } else {
+            alert(newCompanyError.message);
+            setLoading(false);
+            return;
+          }
+        } else if (newCompany) {
+          companyId = newCompany.company_id;
+        } else {
+          alert(newCompanyError.message);
+          setLoading(false);
+          return;
+        }
+      }
+    }
 
     const updates = {
       ...profile,
       id: user.id,
       first_name: profile.first_name || user.user_metadata.full_name,
       last_name: profile.last_name || user.user_metadata.full_name,
-      company_verified: profile.company_verified || false,
+      company_id: companyId,
+      company_verified: false,
       avatar_url: avatarUrl || profile.avatar_url,
       updated_at: new Date(),
       created_at: profile.created_at || new Date(),
     };
 
-    const { error } = await supabase.from('profiles').upsert(updates);
+    const { error } = await updateProfile(updates);
 
     if (error) {
       alert(error.message);
@@ -119,21 +130,74 @@ export default function Account({ session }) {
     setLoading(false);
   }
 
-  async function updateCompany(event) {
+  // async function handleUpdateCompany(event) {
+  //   event.preventDefault();
+  //   setLoading(true);
+
+  //   const companyUpdates = {
+  //     ...company,
+  //     updated_at: new Date(),
+  //   };
+
+  //   const { error: companyError } = await updateCompany(companyUpdates);
+
+  //   if (companyError) {
+  //     alert(companyError.message);
+  //   } else {
+  //     setCompany((prevCompany) => ({ ...prevCompany, ...companyUpdates }));
+  //   }
+
+  //   setLoading(false);
+  // }
+
+  async function handleUpdateTenant(event) {
     event.preventDefault();
     setLoading(true);
 
-    const updates = {
-      ...company,
-      Updated_at: new Date(),
+    let companyId = company.company_id;
+    if (company.company_name) {
+      const { data: existingCompany, error: existingCompanyError } = await getCompanyByName(company.company_name);
+      if (existingCompany) {
+        companyId = existingCompany.company_id;
+      } else {
+        const { data: newCompany, error: newCompanyError } = await insertCompany({ company_name: company.company_name });
+        if (newCompanyError && newCompanyError.code === '23505') { // Unique constraint violation
+          const { data: existingCompanyAfterError } = await getCompanyByName(company.company_name);
+          if (existingCompanyAfterError) {
+            companyId = existingCompanyAfterError.company_id;
+          } else {
+            alert(newCompanyError.message);
+            setLoading(false);
+            return;
+          }
+        } else if (newCompany) {
+          companyId = newCompany.company_id;
+        } else {
+          alert(newCompanyError.message);
+          setLoading(false);
+          return;
+        }
+      }
+    }
+
+    const tenantUpdates = {
+      ...tenant,
+      company_id: companyId,
+      workday_tenant: tenant.workday_tenant ? await encrypt(tenant.workday_tenant) : null,
+      client_id: tenant.client_id ? await encrypt(tenant.client_id) : null,
+      isu_username: tenant.isu_username ? await encrypt(tenant.isu_username) : null,
+      isu_password: tenant.isu_password ? await encrypt(tenant.isu_password) : null,
+      client_secret: tenant.client_secret ? await encrypt(tenant.client_secret) : null,
+      refresh_token: tenant.refresh_token ? await encrypt(tenant.refresh_token) : null,
+      base_url: tenant.base_url ? await encrypt(tenant.base_url) : null,
     };
 
-    const { error } = await supabase.from('companies').upsert(updates);
+    const { error: tenantError } = await updateTenant(tenantUpdates);
 
-    if (error) {
-      alert(error.message);
+    if (tenantError) {
+      alert(tenantError.message);
     } else {
-      setCompany((prevCompany) => ({ ...prevCompany, ...updates }));
+      setTenant((prevTenant) => ({ ...prevTenant, ...tenantUpdates }));
     }
 
     setLoading(false);
@@ -146,7 +210,7 @@ export default function Account({ session }) {
 
   const handleAvatarUpload = (url) => {
     setProfile((prevProfile) => ({ ...prevProfile, avatar_url: url }));
-    updateProfile(new Event('submit'), url);
+    handleUpdateProfile(new Event('submit'), url);
   };
 
   return (
@@ -158,9 +222,9 @@ export default function Account({ session }) {
         <Auth />
       ) : (
         <>
-            <form className="form-container" onSubmit={activeTab === 'user' ? updateProfile : updateCompany}>
-              {activeTab === 'user' && <UserTab session={session} profile={profile} company={company} loading={loading} handleChange={handleChange} setCompany={setCompany} updateProfile={updateProfile} />}
-              {activeTab === 'company' && <CompanyTab profile={profile} company={company} tenant={tenant} loading={loading} setCompany={setCompany} setTenant={setTenant} showISUPassword={showISUPassword} setShowISUPassword={setShowISUPassword} showClientSecret={showClientSecret} setShowClientSecret={setShowClientSecret} />}
+            <form className="form-container" onSubmit={activeTab === 'user' ? handleUpdateProfile : activeTab === 'company' ? handleUpdateTenant : () => {}}>
+              {activeTab === 'user' && <UserTab session={session} profile={profile} company={company} loading={loading} handleChange={handleChange} setCompany={setCompany} updateProfile={handleUpdateProfile} />}
+              {activeTab === 'company' && <CompanyTab profile={profile} company={company} tenant={tenant} loading={loading} setCompany={setCompany} setTenant={setTenant} showisuPassword={showisuPassword} setShowisuPassword={setShowisuPassword} showClientSecret={showClientSecret} setShowClientSecret={setShowClientSecret} />}
               {activeTab === 'avatar' && <AvatarTab profile={profile} handleAvatarUpload={handleAvatarUpload} />}
             </form>
         </>

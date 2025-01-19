@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { supabase } from '../components/supabaseClient';
+import { fetchBlogPosts } from '../components/supabaseClient';
 import { ThreeDots } from 'react-loader-spinner';
 import { format } from 'date-fns';
 import './Blog.css';
@@ -10,25 +10,19 @@ const BlogTOC = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('blog_posts')
-          .select('post_id, post_title, post_tags, created_at')
-          .gt('post_id', 1);
+    const fetchData = async () => {
+      const { data, error } = await fetchBlogPosts();
 
-        if (error) throw error;
-
-        setPosts(data);
-      } catch (error) {
+      if (error) {
         console.error('Error fetching posts: ', error);
         setError(error.message);
-      } finally {
-        setLoading(false);
+      } else {
+        setPosts(data);
       }
+      setLoading(false);
     };
 
-    fetchPosts();
+    fetchData();
   }, []);
 
   if (loading) {

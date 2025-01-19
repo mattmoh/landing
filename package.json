@@ -19,7 +19,9 @@
     "react-loader-spinner": "6.1.6",
     "react-transition-group": "^4.4.2",
     "react-modal": "^3.14.3",
-    "date-fns": "4.1.0"
+    "date-fns": "4.1.0",
+    "crypto-js": "^4.2.0",
+    "bcryptjs": "^2.4.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
