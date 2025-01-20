@@ -65,5 +65,12 @@
 
   .navbar ul.active {
     display: flex;
+    gap: 20px;
+    background-color: rgba(211, 211, 211, 1) !important;
+    border-radius: 10px;
   }
+}
+
+p {
+  margin-bottom: 1rem;
 }

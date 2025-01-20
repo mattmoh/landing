@@ -1,6 +1,7 @@
 /* Blog styles */
 .blog {
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
 }
@@ -11,6 +12,15 @@
   margin-bottom: 0;
   font-family: 'Lora', serif;
   font-weight: bold;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blog-title p, .blog-date p {
+  margin: 0;
+  margin-bottom: 1rem;
 }
 
 .blog-date p {
@@ -21,10 +31,12 @@
 .blog-post {
   width: 80%;
   margin: 0 auto;
+  margin-top: 2rem; 
 }
 
 .blog-post p, .blog-post ul, .blog-post ol {
   text-align: left;
+  margin-bottom: 1rem; /* Added space below p tags */
 }
 
 .blog-post ul {
@@ -42,7 +54,7 @@
   content: '🔗';
 }
 
-.blog-tags {
+.blog-tags, .blog-toc-tags {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -55,40 +67,19 @@
   background-color: var(--color-tag-bg);
   border-radius: 5px;
   padding: 5px 10px;
-  margin: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 10px;
   font-size: 14px;
   color: var(--color-tag-text);
-  border: 1px solid var(--color-main-text);
+  border: 1px solid var(--color-text);
   text-align: center;
 }
 
-.blog-toc-tags span {
-  margin-left: 15px;
-}
-
-.blog-toc, .blog-toc div {
-  text-align: left;
-}
-
-.blog-toc-item {
-  margin-bottom: 20px;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.blog-toc-item a {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-.blog-toc-item h2 {
-  margin: 0;
-  font-size: 1.5rem;
-}
-
-.blog-toc-date {
-  margin: 0;
-  font-size: 1rem;
-  color: var(--color-toc-date);
-  margin-top: 5px;
+.blog-tag {
+  background-color: var(--color-tag-bg);
+  color: var(--color-tag-text);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.875rem;
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import './GitHubRepos.css'; // Import the CSS file for styling
+import { MdOpenInNew } from "react-icons/md";
+import './GitHubRepos.css';
 
 const GitHubRepos = () => {
   const [repos, setRepos] = useState([]);
@@ -19,21 +20,28 @@ const GitHubRepos = () => {
     fetchRepos();
   }, []);
 
+  const toTitleCase = (str) => {
+    return str.replace(/-/g, ' ').replace(/\w\S*/g, (txt) => {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+  };
+
   return (
     <main>
-      <h1>Check out some of my work!</h1>
+      <h1>Portfolio</h1>
       <div className="repo-cards">
         {repos.map(repo => (
-          <a 
-            key={repo.id} 
-            href={repo.html_url} 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="repo-card"
-          >
-            <h2>{repo.name}</h2>
+          <div key={repo.id} className="repo-card">
+            <h2>{toTitleCase(repo.name)}</h2>
             <p>{repo.description}</p>
-          </a>
+            <a 
+              href={repo.html_url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+            ><button>
+              <span>Check it out!</span> <MdOpenInNew />
+            </button></a>
+          </div>
         ))}
       </div>
     </main>

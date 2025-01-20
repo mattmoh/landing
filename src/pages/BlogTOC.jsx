@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchBlogPosts } from '../components/supabaseClient';
 import { ThreeDots } from 'react-loader-spinner';
 import { format } from 'date-fns';
-import './Blog.css';
+import './GitHubRepos.css';
 
 const BlogTOC = () => {
   const [posts, setPosts] = useState([]);
@@ -48,24 +48,31 @@ const BlogTOC = () => {
   }
 
   return (
-    <main className="blog-toc">
-      {posts.map((post) => (
-        <div key={post.post_id} className="blog-toc-item">
-          <a href={`/blog/${post.post_id}`}>
-            <h2>{post.post_title}</h2>
-            <p className="blog-toc-date">{format(new Date(post.created_at), 'MMMM d, yyyy')}</p>
-          </a>
-          {post.post_tags && (
-            <div className="blog-toc-tags">
-              {post.post_tags.map((tag, index) => (
-                <span key={index} className="blog-tag">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
+    <main>
+      <h1>Articles</h1>
+      <div className="repo-cards">
+        {posts.map((post) => (
+          <div key={post.post_id} className="repo-card">
+              <h2>{post.post_title}</h2>
+              <p className="blog-toc-date">{format(new Date(post.created_at), 'MMMM d, yyyy')}</p>
+            {post.post_tags && (
+              <div className="blog-toc-tags">
+                {post.post_tags.map((tag, index) => (
+                  <span key={index} className="blog-tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
+            <a 
+              href={`/blog/${post.post_id}`}
+              rel="noopener noreferrer"
+            ><button>
+              Read it!
+          </button></a>
+          </div>
+        ))}
+      </div>
     </main>
   );
 };

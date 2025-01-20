@@ -1,11 +1,13 @@
-h2 {
+h2, p, ul {
     margin: 0;
 }
 
 p {
     text-align: justify;
+    margin-bottom: 1rem; /* Added space below p tags */
 }
 
 ul {
     list-style-position: inside;
+    margin-bottom: 1rem;
 }
