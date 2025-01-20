@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import { fetchBlogPosts } from '../components/supabaseClient';
 import { ThreeDots } from 'react-loader-spinner';
 import { format } from 'date-fns';
-
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+import './GitHubRepos.css';
 
 const BlogTOC = () => {
   const [posts, setPosts] = useState([]);
@@ -13,25 +10,19 @@ const BlogTOC = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('blog_posts')
-          .select('post_id, post_title, post_tags, created_at')
-          .gt('post_id', 1);
+    const fetchData = async () => {
+      const { data, error } = await fetchBlogPosts();
 
-        if (error) throw error;
-
-        setPosts(data);
-      } catch (error) {
+      if (error) {
         console.error('Error fetching posts: ', error);
         setError(error.message);
-      } finally {
-        setLoading(false);
+      } else {
+        setPosts(data);
       }
+      setLoading(false);
     };
 
-    fetchPosts();
+    fetchData();
   }, []);
 
   if (loading) {
@@ -58,13 +49,12 @@ const BlogTOC = () => {
 
   return (
     <main>
-      <div className="blog-toc">
+      <h1>Articles</h1>
+      <div className="repo-cards">
         {posts.map((post) => (
-          <div key={post.id} className="blog-toc-item">
-            <a href={`/blog/${post.post_id}`}>
+          <div key={post.post_id} className="repo-card">
               <h2>{post.post_title}</h2>
               <p className="blog-toc-date">{format(new Date(post.created_at), 'MMMM d, yyyy')}</p>
-            </a>
             {post.post_tags && (
               <div className="blog-toc-tags">
                 {post.post_tags.map((tag, index) => (
@@ -74,6 +64,12 @@ const BlogTOC = () => {
                 ))}
               </div>
             )}
+            <a 
+              href={`/blog/${post.post_id}`}
+              rel="noopener noreferrer"
+            ><button>
+              Read it!
+          </button></a>
           </div>
         ))}
       </div>

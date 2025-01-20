@@ -6,13 +6,15 @@ export default defineConfig({
   plugins: [react()],
   server: {
     mimeTypes: {
+      '.avif': 'image/avif',
       '.md': 'text/markdown',
+      '.pdf': 'application/pdf'
     },
-    port: 3000, // Match the port with Docker
-    host: '0.0.0.0', // Listen on all network interfaces
+    port: 3000,
+    host: '0.0.0.0',
     watch: {
-      usePolling: true, // Use polling to detect file changes
+      usePolling: true,
     },
   },
-  publicDir: 'public', // Default is 'public', ensure it's not misconfigured
+  publicDir: 'public',
 })

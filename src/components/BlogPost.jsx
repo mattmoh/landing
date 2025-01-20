@@ -1,31 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { createClient } from '@supabase/supabase-js';
+import { fetchBlogPost } from './supabaseClient';
 import { ThreeDots } from 'react-loader-spinner';
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { marked } from 'marked';
 import { format } from 'date-fns';
+import '../pages/GitHubRepos.css';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
-
-const BlogPost = ({ postId }) => {
+const BlogPost = ({ postId, onNavigate, maxPostId }) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const { data, error } = await supabase
-          .from('blog_posts')
-          .select('*')
-          .eq('post_id', postId);
+      const { data, error } = await fetchBlogPost(postId);
 
-        if (error) throw error;
-
-        setData(data);
-      } catch (error) {
+      if (error) {
         console.error('Error connecting to Supabase: ', error);
         setError(error.message);
+      } else {
+        setData(data);
       }
     };
 
@@ -56,19 +49,34 @@ const BlogPost = ({ postId }) => {
 
   const post = data[0];
 
+  if (!post) {
+    return <div>Error: Post not found</div>;
+  }
+
   return (
-    <main className={post.class || 'blog'}>
-      {post.post_title && (
-        <div
-          className={`${post.class}-title`}
-          dangerouslySetInnerHTML={{ __html: marked(post.post_title) }}
-        />
-      )}
-      {postId > 1 && post.created_at && (
-        <div className="blog-date">
-          {format(new Date(post.created_at), 'MMMM d, yyyy')}
+    <main>
+      <div className='blog-title'>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            {postId > 1 && (
+              <FaArrowLeft onClick={() => onNavigate(postId - 1)} style={{ cursor: 'pointer', marginRight: '20px' }} />
+            )}
+            {post.post_title && (
+              <h2 style={{ textAlign: 'center' }}>
+                {post.post_title}
+              </h2>
+            )}
+            {postId < maxPostId && (
+              <FaArrowRight onClick={() => onNavigate(postId + 1)} style={{ cursor: 'pointer', marginLeft: '20px' }} />
+            )}
+          </div>
+          {post.created_at && (
+            <div className="blog-date">
+              {format(new Date(post.created_at), 'MMMM d, yyyy')}
+            </div>
+          )}
         </div>
-      )}
+      </div>
       {post.post_body && (
         <div
           className="blog-post"
