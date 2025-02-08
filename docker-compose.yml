@@ -1,8 +1,10 @@
 services:
-  frontend:
-    build: .
+  astro-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "3000:3000" # Match the port with Vite server
+      - "80:80"
     volumes:
       - .:/app
-      - /app/node_modules # Ensure node_modules is not overwritten
+    command: ["nginx", "-g", "daemon off;"]
