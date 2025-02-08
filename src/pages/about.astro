@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<BaseLayout title="matt moh | about" description="About matt moh">
+	<div class="stack gap-20">
+		<main class="wrapper about">
+			<Hero
+				title="About"
+				tagpne="Thanks for stopping by. Read below to learn more about myself and my background."
+			>
+				<!-- <img
+					width="1553"
+					height="873"
+					src="/assets/at-work.jpg"
+					alt="Jeanine White at work with a colleague"
+				/> -->
+			</Hero>
+
+			<section>
+				<h2 class="section-title">Background</h2>
+				<div class="content">
+					<p>
+						After proudly serving over a decade in the United States Air Force, 
+						I decided to pursue a career aligned with my academic background in Management 
+						Information Systems and Business Management. This journey led me to Deloitte’s 
+						Human Resources Transformation practice as a Workday Consultant, where I began 
+						implementing HR technology projects for multinational conglomerates.
+					</p>
+					<p>
+						Initially focusing on Recruiting, I quickly transitioned into Reporting & Analytics. 
+						When Workday introduced Accounting Center, I was among the first consultants to 
+						implement the product, leveraging my technical expertise to deliver transformative 
+						solutions. This experience naturally evolved into a focus on Finance Transformation, 
+						where I gained extensive hands-on expertise in developing scalable, efficient systems.
+					</p>
+					<p>
+						My career further expanded as I began crafting thought leadership on agnostic 
+						enterprise technology architecture tailored to the insurance industry. For 
+						mid-market [re]insurers ($5B–$15B in revenue), I designed cost-conscious, 
+						adaptable architectures to support growth, often leading implementations through
+						 Workday. My leadership extended beyond technology, fostering collaboration across 
+						 teams and ensuring projects were delivered efficiently while meeting business objectives.
+					</p>
+					<p>
+						Outside of work, I’m passionate about building people and systems in every sense. 
+						I volunteer as a little league baseball coach, helping young athletes develop skills 
+						and confidence, while also managing the league’s finances. This combination of mentorship 
+						and operational management reflects my commitment to empowering others and creating 
+						sustainable, high-performing systems.
+					</p>
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">Education</h2>
+				<div class="content">
+					<strong>Master of Science | Finance</strong>
+					<p>University of Illinois, Chicago</p>
+					<strong>Bachelor of Business Administration | Management</strong>
+					<p>University of Illinois, Springfield</p>
+					<strong>Bachelor of Science | Management Information Systems</strong>
+					<p>University of Illinois, Springfield</p>
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">Workday Certifications</h2>
+				<div class="content">
+					<ul>
+						<li>Engagement Manger/Project Manager (EM/PM)</li>
+						<li>Foundation Data Model (FDM)</li>
+						<li>Accounting Center</li>
+						<li>Record to Report (R2R)</li>
+						<li>People Analytics</li>
+						<li>Prism Analytics</li>
+						<li>Advanced Reporting</li>
+						<li>Recruiting</li>
+						<li>Human Capital Management (HCM)</li>
+					</ul>
+				</div>
+			</section>
+		</main>
+
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.about {
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	img {
+		margin-top: 1.5rem;
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-md);
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		color: var(--gray-200);
+	}
+
+	.section-title {
+		grid-column-start: 1;
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+	}
+
+	.content {
+		grid-column: 2 / 4;
+	}
+
+	.content :global(a) {
+		text-decoration: 1px sopd underpne transparent;
+		text-underpne-offset: 0.25em;
+		transition: text-decoration-color var(--theme-transition);
+	}
+
+	.content :global(a:hover),
+	.content :global(a:focus) {
+		text-decoration-color: currentColor;
+	}
+
+	.content p {
+		margin-bottom: 1rem;
+		text-align: justify;
+	}
+
+	.content ul, li {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	@media (min-width: 50em) {
+		.about {
+			display: grid;
+			grid-template-columns: 1fr 60% 1fr;
+		}
+
+		.about > :global(:first-child) {
+			grid-column-start: 2;
+		}
+
+		section {
+			display: contents;
+			font-size: var(--text-lg);
+		}
+	}
+</style>
