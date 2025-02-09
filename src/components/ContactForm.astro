@@ -1,0 +1,205 @@
+---
+import Icon from './Icon.astro';
+// CSRF Token (For Security)
+const csrfToken = crypto.randomUUID();
+const API_URL = 'https://still-disk-5c4e.matthew-mohrenweiser.workers.dev/'; // Replace with your actual Worker URL
+---
+
+<form id="contact-form">
+  <input type="hidden" name="csrf_token" value={csrfToken} />
+
+  <div>
+    <input type="text" name="name" id="name" placeholder="Name" />
+  </div>
+
+  <div>
+    <input type="text" name="company" id="company" placeholder="Company" />
+  </div>
+
+  <div>
+    <input type="email" name="email" id="email" placeholder="Email" required />
+  </div>
+
+  <button type="submit">Submit <Icon icon="paper-plane-tilt" size="1.2em" /></button>
+  
+  <div id="formMessage" class="hidden"></div>
+  <div class="error-messages">
+    <p id="nameOrCompanyError" class="error-message"></p>
+    <p id="emailError" class="error-message"></p>
+  </div>
+</form>
+
+<script>
+  const API_URL = 'https://still-disk-5c4e.matthew-mohrenweiser.workers.dev/'; // Replace with your actual Worker URL
+  const form = document.getElementById('contact-form');
+  const formMessage = document.getElementById('formMessage');
+  const submitButton = form.querySelector('button[type="submit"]');
+  const nameOrCompanyError = document.getElementById('nameOrCompanyError');
+  const emailError = document.getElementById('emailError');
+
+  function showError(element, message) {
+    element.textContent = message;
+    element.classList.remove('hidden');
+  }
+
+  function hideError(element) {
+    element.textContent = '';
+    element.classList.add('hidden');
+  }
+
+  function setSubmitting(isSubmitting) {
+    submitButton.disabled = isSubmitting;
+  }
+
+  function showMessage(message, isError) {
+    formMessage.textContent = message;
+    formMessage.className = `mt-4 p-4 text-sm sm:text-base rounded-md ${
+      isError ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'
+    }`;
+    formMessage.classList.remove('hidden');
+  }
+
+  function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Reset errors
+    hideError(nameOrCompanyError);
+    hideError(emailError);
+    formMessage.classList.add('hidden');
+    
+    const formData = new FormData(form);
+    const name = formData.get('name');
+    const company = formData.get('company');
+    const email = formData.get('email');
+
+    // Client-side validation
+    let hasError = false;
+    if (!email || !validateEmail(email)) {
+      showError(emailError, !email ? 'Email is required' : 'Please enter a valid email address');
+      hasError = true;
+    }
+    if (!name && !company) {
+      showError(nameOrCompanyError, 'Name or Company is required');
+      hasError = true;
+    }
+    
+    if (hasError) return;
+
+    try {
+      setSubmitting(true);
+      
+      // Send data to Cloudflare Worker
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, company, email })
+      });
+
+      if (!response.ok) {
+        const result = await response.json();
+        throw new Error(result.error || 'An unexpected error occurred.');
+      }
+
+      showMessage('Customer added successfully!', false);
+      form.reset();
+    } catch (error) {
+      showMessage(error.message, true);
+    } finally {
+      setSubmitting(false);
+    }
+  });
+</script>
+
+<style>
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  input {
+    padding: 0.625rem;
+    border: 1px solid var(--gray-800);
+    border-radius: 0.25rem;
+    background-color: transparent;
+    color: var(--gray-400);
+    font-size: 1.25rem;
+    width: 100%; 
+    max-width: 400px; 
+  }
+
+  button {
+    position: relative;
+    display: flex;
+    place-content: center;
+    text-align: center;
+    padding: 0.7em 2.5em; 
+    gap: 1em; 
+    color: var(--accent-text-over);
+    text-decoration: none;
+    line-height: 1.1;
+    border-radius: 999rem;
+    overflow: hidden;
+    background: var(--gradient-accent-orange);
+    box-shadow: var(--shadow-md);
+    white-space: nowrap;
+    width: 100%; 
+    max-width: 400px;
+    font-size: 1.25rem;
+    border: none;
+  }
+
+  @media (min-width: 20em) {
+    button {
+      font-size: var(--text-xs);
+    }
+  }
+
+  /* Overlay for hover effects. */
+  button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    transition: background-color var(--theme-transition);
+    mix-blend-mode: overlay;
+  }
+
+  button:focus::after,
+  button:hover::after {
+    background-color: hsla(var(--gray-999-basis), 0.3);
+  }
+
+  @media (min-width: 50em) {
+    button {
+      font-size: var(--text-sm);
+    }
+  }
+
+  p {
+    color: red;
+    font-size: 0.875rem;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .error-message {
+    min-height: 1.25rem;
+  }
+
+  .error-messages {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+</style>

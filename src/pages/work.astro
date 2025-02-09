@@ -7,6 +7,7 @@ import ContactCTA from '../components/ContactCTA.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 import Hero from '../components/Hero.astro';
 import Grid from '../components/Grid.astro';
+import Resume from '../components/Resume.astro';
 
 
 const projects = (await getCollection('work')).sort(
@@ -34,6 +35,7 @@ const projects = (await getCollection('work')).sort(
 					))
 				}
 			</Grid>
+			<Resume />
 		</main>
 		<ContactCTA />
 	</div>
