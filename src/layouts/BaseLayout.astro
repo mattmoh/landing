@@ -18,6 +18,11 @@ const { title, description } = Astro.props;
 <html lang="en">
 	<head>
 		<MainHead title={title} description={description} />
+		<meta name="robots" content="index, follow" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="/assets/portrait.png" />
+		<meta property="og:url" content="https://www.mattmoh.com" />
 	</head>
 	<body>
 		<div class="stack backgrounds">
@@ -25,6 +30,20 @@ const { title, description } = Astro.props;
 			<slot />
 			<Footer />
 		</div>
+		
+		<script type="application/ld+json">
+			{
+			  "@context": "https://schema.org",
+			  "@type": "Person",
+			  "name": "matt moh",
+			  "url": "https://www.mattmoh.com",
+			  "jobTitle": "Workday Consultant",
+			  "sameAs": [
+				"https://www.linkedin.com/in/matt-mohrenweiser",
+				"https://github.com/mattmoh"
+			  ]
+			}
+			</script>
 
 		<script>
 			// Add “loaded” class once the document has completely loaded.
