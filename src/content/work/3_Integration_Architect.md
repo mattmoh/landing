@@ -13,14 +13,14 @@ tags:
   - Integrations
 ---
 
-#### Strategic Sourcing
+### Strategic Sourcing
 
 Integrate Workday Strategic Sourcing with Workday Finance and ProcessUnity (TPRM).
 
-#### Punchout Catalogs
+### Punchout Catalogs
 
 Integrate four (4) external webstores to facilitate end-user requisitions, purchase orders and supplier invoices. Develop boomerang integrations to simplify Vendor Management processing.
 
-#### Financial Planning & Analysis (FP&A)
+### Financial Planning & Analysis (FP&A)
 
 With more detailed data available, rewrote ETL process to enable planning at the contract level.

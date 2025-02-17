@@ -34,22 +34,21 @@ projects.sort((a, b) => +b.data.startDate - +a.data.startDate);
 			<ul class="projects">
 				{
 					projects.map((project) => (
-						<li class="project">
+						<a href={`/work/${project.id}`} class="project">
 							<div class="version_wrapper">
+								<h2 class="project_title">{project.data.title}</h2>
 								<span class="date">
 									{calculateMonths(project.data.startDate, project.data.endDate)} months
 								</span>
-								<a href={`/work/${project.id}`}><h3 class="project_title">{project.data.title}</h3></a>
 							</div>
 							<div class="project_info">
 								<div class="content">
 									{render(project).then(({ Content }) => (
-										<img src={project.data.img} alt={project.data.title} />
 										<Content />
 									))}
 								</div>
 							</div>
-						</li>
+						 </a>
 					))
 				}
 			</ul>
@@ -70,11 +69,11 @@ projects.sort((a, b) => +b.data.startDate - +a.data.startDate);
 	.project {
 		display: flex;
 		flex-direction: column;
-		gap: 1.5rem;
-	}
-
-	a {
+		border: 1px solid var(--gray-800);
+		border-radius: 12px;
+		padding: 1.5rem;
 		text-decoration: none;
+		color: inherit;
 	}
 
 	hr {
@@ -84,7 +83,6 @@ projects.sort((a, b) => +b.data.startDate - +a.data.startDate);
 	}
 
 	.content {
-		padding-left: calc(6em + 1em);
 		ol,
 		ul {
 			padding-left: 2em;
@@ -111,27 +109,27 @@ projects.sort((a, b) => +b.data.startDate - +a.data.startDate);
 				}
 			}
 		}
+		h2, h3, h4, h5, h6 {
+			padding-top: 1rem;
+		}
+
+		h2:first-of-type, h3:first-of-type, h4:first-of-type, h5:first-of-type, h6:first-of-type {
+			padding-top: 0;
+		}
 	}
 
 	.version_wrapper {
 		display: flex;
-		flex-direction: column;
-		position: sticky;
-		top: 0;
-		border-top: 1em solid var(--gray-999);
-		font-family: var(--font-system);
-		font-size: var(--text-md);
-		background: var(--gray-999);
+		flex-direction: row;
 		align-items: flex-start;
-		gap: 0.5rem;
-		z-index: 1;
+		justify-content: space-between;
+		gap: 1rem;
+		margin-bottom: 0.5rem;
 	}
 
 	@media (min-width: 50em) {
 		.version_wrapper {
-			flex-direction: row;
-			align-items: center;
-			gap: 1rem;
+			top: 0;
 		}
 	}
 
@@ -144,17 +142,20 @@ projects.sort((a, b) => +b.data.startDate - +a.data.startDate);
 	.date {
 		font-size: var(--text-xl);
 		color: var(--gray-0);
+		font-family: 'Source Code Pro', monospace;
+		align-self: flex-end;
 	}
 
 	.project_title {
-		padding-left: calc(6em + 1em);
+		text-decoration: underline;
+		text-decoration-color: var(--accent-regular);
 	}
 
 	.project_info {
 		flex-grow: 1;
 		position: relative;
 		top: 0;
-		padding-left: calc(6em + 1em);
+		padding-left: 1rem;
 	}
 
 	@media (max-width: 50em) {

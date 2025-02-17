@@ -79,6 +79,7 @@ const { Content } = await render(entry);
 	.tags {
 		display: flex;
 		gap: 0.5rem;
+		flex-wrap: wrap;
 	}
 
 	.description {
@@ -100,7 +101,19 @@ const { Content } = await render(entry);
 	.content :global(h3),
 	.content :global(h4),
 	.content :global(h5) {
-		margin: 1.5rem 0;
+		margin-top: 1.5rem;
+	}
+
+	.content :global(h1:first-of-type),
+	.content :global(h2:first-of-type),
+	.content :global(h3:first-of-type),
+	.content :global(h4:first-of-type),
+	.content :global(h5:first-of-type) {
+		margin-top: 0;
+	}
+
+	.content :global(p) {
+		margin: 0 0 1.5rem 0;
 	}
 
 	.content :global(img) {
