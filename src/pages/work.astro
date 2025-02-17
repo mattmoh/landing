@@ -1,18 +1,21 @@
 ---
-import { getCollection } from 'astro:content';
+import { render, getCollection } from 'astro:content';
 
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 import ContactCTA from '../components/ContactCTA.astro';
-import PortfolioPreview from '../components/PortfolioPreview.astro';
 import Hero from '../components/Hero.astro';
-import Grid from '../components/Grid.astro';
 import Resume from '../components/Resume.astro';
 
+function calculateMonths(startDate, endDate) {
+	const start = new Date(startDate);
+	const end = endDate ? new Date(endDate) : new Date();
+	const months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+	return endDate ? months : `${months}+`;
+}
 
-const projects = (await getCollection('work')).sort(
-	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
-);
+const projects = await getCollection('work');
+projects.sort((a, b) => +b.data.startDate - +a.data.startDate);
 ---
 
 <BaseLayout
@@ -26,17 +29,147 @@ const projects = (await getCollection('work')).sort(
 				tagline="See my most recent projects below to get an idea of my past experience."
 				align="start"
 			/>
-			<Grid variant="offset">
+			<Resume />
+
+			<ul class="projects">
 				{
 					projects.map((project) => (
-						<li>
-							<PortfolioPreview project={project} />
+						<li class="project">
+							<div class="version_wrapper">
+								<span class="date">
+									{calculateMonths(project.data.startDate, project.data.endDate)} months
+								</span>
+								<a href={`/work/${project.id}`}><h3 class="project_title">{project.data.title}</h3></a>
+							</div>
+							<div class="project_info">
+								<div class="content">
+									{render(project).then(({ Content }) => (
+										<img src={project.data.img} alt={project.data.title} />
+										<Content />
+									))}
+								</div>
+							</div>
 						</li>
 					))
 				}
-			</Grid>
-			<Resume />
+			</ul>
 		</main>
 		<ContactCTA />
 	</div>
 </BaseLayout>
+
+<style>
+	.projects {
+		list-style: none;
+		padding: 0;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 3.5rem;
+	}
+
+	.project {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	hr {
+		margin: 1em 0;
+		border: 0;
+		border-bottom: none;
+	}
+
+	.content {
+		padding-left: calc(6em + 1em);
+		ol,
+		ul {
+			padding-left: 2em;
+			margin-bottom: 1em;
+		}
+
+		ul {
+			list-style: none;
+
+			li {
+				position: relative;
+				margin-bottom: 0.75em;
+
+				&:before {
+					content: '';
+					display: block;
+					position: absolute;
+					left: -1em;
+					top: 0.63em;
+					width: 8px;
+					height: 8px;
+					background: var(--gradient-accent);
+					border-radius: 99px;
+				}
+			}
+		}
+	}
+
+	.version_wrapper {
+		display: flex;
+		flex-direction: column;
+		position: sticky;
+		top: 0;
+		border-top: 1em solid var(--gray-999);
+		font-family: var(--font-system);
+		font-size: var(--text-md);
+		background: var(--gray-999);
+		align-items: flex-start;
+		gap: 0.5rem;
+		z-index: 1;
+	}
+
+	@media (min-width: 50em) {
+		.version_wrapper {
+			flex-direction: row;
+			align-items: center;
+			gap: 1rem;
+		}
+	}
+
+	@media (max-width: 50em) {
+		.version_wrapper {
+			position: static;
+		}
+	}
+
+	.date {
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+	}
+
+	.project_title {
+		padding-left: calc(6em + 1em);
+	}
+
+	.project_info {
+		flex-grow: 1;
+		position: relative;
+		top: 0;
+		padding-left: calc(6em + 1em);
+	}
+
+	@media (max-width: 50em) {
+		.project_info {
+			padding-left: 0;
+		}
+	}
+
+	.content {
+		margin: 0;
+		img {
+			max-width: 100%;
+			height: auto;
+			border-radius: 12px;
+			border: 1px solid var(--gray-200);
+		}
+	}
+</style>

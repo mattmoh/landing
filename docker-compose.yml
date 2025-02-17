@@ -1,10 +1,10 @@
 services:
-  astro-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  astro-portfolio:
+    build: .
     ports:
-      - "80:80"
+      - '80:80'
     volumes:
       - .:/app
-    command: ["nginx", "-g", "daemon off;"]
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true

@@ -1,7 +1,7 @@
 # Base image with Node.js
 FROM node:18-alpine AS build
 
-# Set working directory
+# Set the working directory
 WORKDIR /app
 
 # Copy package.json and install dependencies

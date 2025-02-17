@@ -7,8 +7,9 @@ export const collections = {
 		loader: glob({ base: './src/content/work', pattern: '**/*.md', }),
 		schema: z.object({
 			title: z.string(),
-			description: z.string(),
-			publishDate: z.coerce.date(),
+			clientProfile: z.string(),
+			startDate: z.coerce.date(),
+			endDate: z.coerce.date().optional(),
 			tags: z.array(z.string()),
 			img: z.string(),
 			img_alt: z.string().optional(),
