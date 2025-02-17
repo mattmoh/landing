@@ -24,12 +24,14 @@ projects.sort((a, b) => +b.data.startDate - +a.data.startDate);
 >
 	<div class="stack gap-20">
 		<main class="wrapper stack gap-8">
-			<Hero
-				title="My Work"
-				tagline="See my most recent projects below to get an idea of my past experience."
-				align="start"
-			/>
-			<Resume />
+			<div class="hero">
+				<Hero
+					title="My Work"
+					tagline="See my most recent projects below to get an idea of my past experience."
+					align="start"
+				/>
+				<Resume />
+			</div>
 
 			<ul class="projects">
 				{
@@ -58,6 +60,7 @@ projects.sort((a, b) => +b.data.startDate - +a.data.startDate);
 </BaseLayout>
 
 <style>
+
 	.projects {
 		list-style: none;
 		padding: 0;
@@ -70,11 +73,19 @@ projects.sort((a, b) => +b.data.startDate - +a.data.startDate);
 		display: flex;
 		flex-direction: column;
 		border: 1px solid var(--gray-800);
-		border-radius: 12px;
 		padding: 1.5rem;
 		text-decoration: none;
 		color: inherit;
+		border-radius: 0.75rem;
+		background-color: var(--gray-999_40);
+		box-shadow: var(--shadow-sm);
 	}
+
+	@media (min-width: 50em) {
+		.project {
+			border-radius: 1.5rem;
+			padding: 2.5rem;
+		}
 
 	hr {
 		margin: 1em 0;
@@ -123,7 +134,7 @@ projects.sort((a, b) => +b.data.startDate - +a.data.startDate);
 		flex-direction: row;
 		align-items: flex-start;
 		justify-content: space-between;
-		gap: 1rem;
+		/* gap: 1rem; */
 		margin-bottom: 0.5rem;
 	}
 
@@ -136,6 +147,10 @@ projects.sort((a, b) => +b.data.startDate - +a.data.startDate);
 	@media (max-width: 50em) {
 		.version_wrapper {
 			position: static;
+			flex-direction: column;
+		}
+		.date {
+			align-self: flex-start;
 		}
 	}
 
@@ -144,6 +159,12 @@ projects.sort((a, b) => +b.data.startDate - +a.data.startDate);
 		color: var(--gray-0);
 		font-family: 'Source Code Pro', monospace;
 		align-self: flex-end;
+	}
+
+	@media (max-width: 50em) {
+		.date {
+			align-self: flex-start;
+		}
 	}
 
 	.project_title {
@@ -172,5 +193,13 @@ projects.sort((a, b) => +b.data.startDate - +a.data.startDate);
 			border-radius: 12px;
 			border: 1px solid var(--gray-200);
 		}
+	}
+
+	.hero {
+		display: grid;
+		grid-template-columns: 6fr 4fr;
+		padding-inline: 2.5rem;
+		gap: 3.75rem;
+		align-items: center;
 	}
 </style>
