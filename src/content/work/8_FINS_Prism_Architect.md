@@ -5,7 +5,7 @@ endDate: '2023-06-01'
 img: /assets/stock-4.jpg
 img_alt: Executive in a meeting
 clientProfile: |
-  Top 3 property & casualty insurance carrier in the United States
+  A Top 3 property & casualty insurance carrier in the United States
 tags:
   - Prism Analytics
   - Adaptive Planning

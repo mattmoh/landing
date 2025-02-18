@@ -5,7 +5,7 @@ endDate: '2023-04-01'
 img: /assets/stock-1.jpg
 img_alt: Engineer working on a project
 clientProfile: |
-  Top 3 property & casualty insurance carrier in the United States
+  A Top 3 property & casualty insurance carrier in the United States
 tags:
   - Accounting Center
   - Mergers & Acquisitions

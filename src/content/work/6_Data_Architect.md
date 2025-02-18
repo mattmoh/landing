@@ -5,7 +5,7 @@ endDate: '2023-12-01'
 img: /assets/stock-2.jpg
 img_alt: Pearls of silky soft white cotton, bubble up under vibrant lighting
 clientProfile: |
-  Mid-Market (re)insurance carrier
+  A Canadian-based insurance company with $1B in Gross Written Premium (revenue)
 tags:
   - Finance
   - Enterprise

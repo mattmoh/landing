@@ -12,6 +12,8 @@ export const collections = {
 			endDate: z.coerce.date().optional(),
 			tags: z.array(z.string()),
 			img: z.string(),
+			lightImage: z.string().optional(),
+			darkImage: z.string().optional(),
 			img_alt: z.string().optional(),
 		}),
 	}),

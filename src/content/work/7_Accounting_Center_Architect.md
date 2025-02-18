@@ -5,7 +5,7 @@ endDate: '2023-09-01'
 img: /assets/stock-3.jpg
 img_alt: Project management tools and documents
 clientProfile: |
-  Private Teaching Hospital
+  A private teaching hospital
 tags:
   - Accounting Center
   - Healthcare

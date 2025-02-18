@@ -5,7 +5,7 @@ endDate: '2022-06-01'
 img: /assets/stock-3.jpg
 img_alt: Coordinator organizing files
 clientProfile: |
-  Top 3 property & casualty insurance carrier in the United States
+  A Top 3 property & casualty insurance carrier in the United States
 tags:
   - Accounting Center
   - Prism Analytics

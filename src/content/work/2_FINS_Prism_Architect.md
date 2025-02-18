@@ -5,7 +5,7 @@ endDate: '2024-12-31'
 img: /assets/stock-1.jpg
 img_alt: Stock 1
 clientProfile: |
-  Not-for-Profit financial cooperative in the Southwest United States with over $2.5 billion in assets and over 129,000 members (as of December 31, 2024).
+  A not-for-Profit financial cooperative in the Southwest United States with over $2.5 billion in assets and over 129,000 members
 tags:
   - Prism Analytics
   - Banking / Treasury

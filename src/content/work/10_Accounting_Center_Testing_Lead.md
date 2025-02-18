@@ -5,7 +5,7 @@ endDate: '2022-09-01'
 img: /assets/stock-2.jpg
 img_alt: Developer writing code
 clientProfile: |
-  Tech Startup
+  A global underwriter of insurance and reinsurance with $3.4B Gross Written Premiums (revenue)
 tags:
   - Accounting Center
 ---

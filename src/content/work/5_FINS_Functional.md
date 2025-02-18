@@ -5,7 +5,7 @@ endDate: '2024-02-01'
 img: /assets/stock-2.jpg
 img_alt: Specialist working on a computer
 clientProfile: |
-  Mid-Market (re)insurance carrier
+  The US subsidy of an Asia-based (re)insurance carrier.
 tags:
   - Finance
   - Mergers & Acquisition

@@ -5,7 +5,7 @@ endDate: '2024-11-01'
 img: /assets/stock-1.jpg
 img_alt: Stock 1
 clientProfile: |
-  Leading commercial property and casualty insurance company serving the global business community.
+  Leading commercial property and casualty insurance company serving the global business community
 tags:
   - Strategic Souring
   - Procurement

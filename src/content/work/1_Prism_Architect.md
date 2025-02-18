@@ -5,7 +5,7 @@ startDate: '2025-01-01'
 img: /assets/stock-3.jpg
 img_alt: Stock 3
 clientProfile: |
-  Non-profit health insurance provider also offering assistance with housing, job training, and other programs.
+  A non-profit health insurance provider also offering assistance with housing, job training, and other programs
 tags:
   - Prism Analytics
   - Total Rewards
@@ -14,6 +14,8 @@ tags:
 
 ### Total Rewards Statement
 Consolidated external compensation and rewards (commission, benefits, allowances, bonuses, etc.) with Workday compensation and rewards for a complete view.
+
+![14_new-light.svg](/assets/14_new-light.svg)
 
 ### Accounting Center
 Assist Financial Accounting and Accounting Center workstreams on developing efficient and effective data pipelines for 3 accounting sources.

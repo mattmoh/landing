@@ -5,7 +5,7 @@ endDate: '2020-12-01'
 img: /assets/stock-4.jpg
 img_alt: Consultant working with a client
 clientProfile: |
-  Leading Consulting Firm
+  A global bank headquartered in Canada
 tags:
   - Prism Analytics
   - Extend
