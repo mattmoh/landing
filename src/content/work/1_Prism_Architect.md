@@ -17,5 +17,5 @@ Consolidated external compensation and rewards (commission, benefits, allowances
 
 ![14_new-light.svg](/assets/14_new-light.svg)
 
-### Accounting Center
-Assist Financial Accounting and Accounting Center workstreams on developing efficient and effective data pipelines for 3 accounting sources.
+<!-- ### Accounting Center
+Assist Financial Accounting and Accounting Center workstreams on developing efficient and effective data pipelines for 3 accounting sources. -->

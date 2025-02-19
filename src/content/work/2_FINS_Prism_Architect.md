@@ -13,10 +13,16 @@ tags:
 ---
 
 ### Accounting Center
-Identified duplicate records between a detailed transactional data feed and a summarized batch data feed. Assisted Financial Accounting and Accounting Center workstreams with developing 2 accounting sources.
+Identified duplicate records between a detailed transactional data feed and a summarized batch data feed.
+
+![13-light.svg](/assets/13-light.svg)
 
 ### Bank Statement Reconciliation
-Identify and allocate aggregate checks into detail formed to assist in banking reconciliation
+Identify and allocate aggregate Accounts Payable checks into detail form to assist in banking reconciliation.
+
+![13-light-bank.svg](/assets/13-light-bank.svg)
 
 ### Managerial Reporting
-Create a data pipeline as a stop-gap during a change management transition period.
+Create a data pipeline consolidating 2 accounting sources, the balance sheet and income statement in to a single dataset and reverse map to legacy chart of accounts as a stop-gap during a change management transition period.
+
+![13-light-report.svg](/assets/13-light-report.svg)
