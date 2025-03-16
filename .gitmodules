@@ -1,0 +1,3 @@
+[submodule "landing/src/content/work"]
+	path = landing/src/content/work
+	url = https://github.com/mattmoh/landing-content.git
